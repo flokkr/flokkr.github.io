@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flokkr Documentation</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="generator" content="Hugo 0.32.4" />
+
+<title>Docker images for Open Source bigdata/hadoop projects :: Flokkr Documentation</title>
+<link rel="shortcut icon" href="/docs/images/favicon.png" type="image/x-icon" />
+<link href="/docs/css/nucleus.css" rel="stylesheet">
+<link href="/docs/css/font-awesome.min.css" rel="stylesheet">
+<link href="/docs/css/hybrid.css" rel="stylesheet">
+<link href="/docs/css/featherlight.min.css" rel="stylesheet">
+<link href="/docs/css/auto-complete.css" rel="stylesheet">
+<link href="/docs/theme-original/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/css/bootstrap.min.css">
+<script src="/docs/js/jquery-2.x.min.js"></script>
+<style type="text/css">
+  :root #header + #content > #left > #rlblock_left {
+    display:none !important;
+  }
+</style>
+<meta name="description" content="">
+
+
+    
+  </head>
+  <body data-url="/docs/">
+    
+      <div id="headermain"></div>
+<nav id="sidebar" class="showVisitedLinks">
+
+
+
+<div class="highlightable">
+  <div id="header-wrapper">
+    <div id="header">
+      
+	
+  
+    <p>Flokkr documentation</p>
+
+  
+
+    </div>
+        <div class="searchbox">
+		    <label for="search-by"><i class="fa fa-search"></i></label>
+		    <input data-search-input id="search-by" type="text" placeholder="Search...">
+		    <span data-search-clear=""><i class="fa fa-close"></i></span>
+		</div>
+		<script type="text/javascript" src="/docs/js/lunr.min.js"></script>
+		<script type="text/javascript" src="/docs/js/auto-complete.js"></script>
+		<script type="text/javascript">
+        
+            var baseurl = "https:\/\/flokkr.github.io\/docs\/";
+        
+		</script>
+		<script type="text/javascript" src="/docs/js/search.js"></script>
+  </div>
+
+      <ul class="topics">
+            <li data-nav-id="/docs/" class="dd-item">
+            <a href="/docs/"><i class="fa fa-fw fa-home"></i></a>
+            </li>
+    <li data-nav-id="/docs/runtime/" class="dd-item">
+      <a href="/docs/runtime/">
+        <span>Runtime environments</span><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </a>
+        <ul>
+      <li data-nav-id="/docs/runtime/compose/" class="dd-item">
+        <a href="/docs/runtime/compose/">
+          <span>Docker compose based hadoop/spark cluster</span><i class="fa fa-circle-thin read-icon"></i>
+        </a>
+    </li>
+        </ul>
+    </li>
+
+
+
+        <section id="shortcuts">
+                <li class="" role=""><h3>More</h3><a href="https://github.com/flokkr" target="_blank" rel="noopener"><i class='fa fa-github'></i> Github repo</a></li>
+                <li class="" role=""><a href="https://flokkr.github.io/" target="_blank" rel="noopener"><i class='fa fa-camera'></i> Blog</a></li>
+        </section>
+            <a id="clear-history" class="" href="#" data-clear-history-toggle=""><i class="fa  fa-history"></i> Clear History</a>
+
+    <hr />
+    <li></li>
+    
+    </ul>
+
+ <section id="footer">
+    </section>
+  </div>
+</nav>
+
+
+
+<section id="body">
+<div id="overlay"></div>
+<div class="padding highlightable">
+
+
+<div id="body-inner">
+  
+
+
+
+    
+    
+    
+<span id="sidebar-toggle-span">
+<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
+</span>
+ 
+
+
+<p>Flokkr is an umbrella github organization to collect all of my containerization work for Apache bigdata/datascience projects such as Apache Hadoop or Apache Spark.</p>
+
+<p>On high level, there are two main type of the subprojects/git repos under this organization: Containers and runtime configuration examples.</p>
+
+<p>If you would like to run a simple Apache bigdata project, open the repository and use the included docker-compose file. If you need a more sophisticated cluster which includes multiple product and different configuration: investigate the runtime repositories and choose a method which is the most appropriate for you.</p>
+
+<h3 id="containers">Containers</h3>
+
+<p>All of the containers are based on one smart baseimage defined in <a href="https://github.com/flokkr/docker-baseimage">flokkr/docker-baseimage</a>. It contains all the configuration loading script (based on environment variables or consul servers) and other extensions (eg. btrace instrumentation).</p>
+
+<p>To get more information about the available environment variables check the <a href="https://github.com/flokkr/launcher">flokkr/launcher</a> repository.</p>
+
+<p>All the other containers can be found with <a href="https://github.com/search?q=org%3Aflokkr+docker">docker-</a> prefix under the flokkr organization.</p>
+
+<p>The containers are usually built on travis-ci and pushed to the docker hub instead to use dockerhub automatic buidls due to the limitation of the dockerhub (for example it&rsquo;s hard to generate matrix builds with all the older versions).</p>
+
+<p>Available images:</p>
+
+<table>
+<thead>
+<tr>
+<th>Repository</th>
+<th>Product</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://github.com/flokkr/docker-baseimage">docker-baseimage</a></td>
+<td>Base image with all the configuration loading magic</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/flokkr/docker-hadoop">docker-hadoop</a></td>
+<td>Apache Hadoop components (hdfs/yarn)</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/flokkr/docker-spark">docker-spark</a></td>
+<td>Apache Spark components</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/flokkr/docker-spark">docker-storm</a></td>
+<td>Apache Storm components</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/flokkr/docker-spark">docker-zookeeper</a></td>
+<td>Apache Zookeeper components</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/flokkr/docker-spark">docker-kafka</a></td>
+<td>Apache Kafka components</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/flokkr/docker-spark">docker-hbase</a></td>
+<td>Apache HBase components</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/flokkr/docker-zeppelin">docker-zeppelin</a></td>
+<td>Apache Zeppelin interface</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/flokkr/docker-krb5">docker-krb5</a></td>
+<td>Highly insecure kerberos container, with an open REST api to request new kerberos keytab files.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Note</strong>: previous version of the containers (and some not yet migrated) can be found under the <a href="https://github.com/elek">github.com/elek</a> account.</p>
+
+<h3 id="runtime-examples">Runtime examples</h3>
+
+<p>Docker image creation is easy, just a few lines to download and unpack the Apache projects. The tricky part is how the containers could work together: service discovery, configuration management, data locality, multi-tenancy, etc.</p>
+
+<p>There are various examples how the containers could be used and each of them have a separated repository with the <a href="https://github.com/search?q=org%3Aflokkr+docker">runtime</a>- prefix.</p>
+
+<table>
+<thead>
+<tr>
+<th>Repository</th>
+<th>Details</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://github.com/flokkr/runtime-compose">runtime-compose</a></td>
+<td>docker-composed based pseudo clusters (multiple containers but only for one hosts). Configuration are defined by environment variables. For development and local experiments.</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/flokkr/runtime-consul">runtime-consul</a></td>
+<td>Multi-host real cluster with consul (for storing the configuration and docker-compose definitions) and docker-compose. Small scripts help to maintain the cluster state (restart components on every config change). Full data-locality is achieved by using docker host network.</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/flokkr/runtime-nomad">runtime-nomad</a></td>
+<td>Multi-host real cluster with consul (for storing the configuration and docker-compose definitions) and nomad (to start the instances). Small scripts help to maintain the cluster state (restart components on every config change). Full data-locality is achieved by using docker host network.</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/flokkr/runtime-swarm">runtime-swarm</a></td>
+<td>Similar to the previous one, but the container scheduling part is simplified with docker-compose + swarm. No host network, so no data-locality. Environment variable based configuration management.</td>
+</tr>
+
+<tr>
+<td><a href="https://gthub.com/flokkr/runtime-kubernetes">runtime-kubernetes</a></td>
+<td>Kubernetes managed cluster with kubernetes ConfigMap based configuration set.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    
+    
+          <footer class=" footline" >
+	
+</footer>
+  </div>
+</div>
+
+<div id="navigation">
+<a class="nav nav-next" href="/docs/runtime/" title="Runtime environments" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
+
+</section>
+<div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+  <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+</div>    
+
+<script src="/docs/js/clipboard.min.js"></script>
+<script src="/docs/js/featherlight.min.js"></script>
+<script src="/docs/js/html5shiv-printshiv.min.js"></script>
+
+<script src="/docs/js/modernizr.custom.71422.js"></script>
+<script src="/docs/js/docdock.js"></script>
+<script src="/docs/theme-original/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

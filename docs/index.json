@@ -1,0 +1,43 @@
+[
+{
+	"uri": "https://flokkr.github.io/docs/runtime/",
+	"title": "Runtime environments",
+	"tags": [],
+	"description": "",
+	"content": "The containers could be run in different way. But the end of the day the same questions should be ansered:\n How he containers are configured? How can they locate the master components? How they are defined?  Therefore for each runtime example we include a generic descriptor table to help the comparison of various solutions.\n"
+},
+{
+	"uri": "https://flokkr.github.io/docs/_header/",
+	"title": "header",
+	"tags": [],
+	"description": "",
+	"content": "Flokkr documentation\n"
+},
+{
+	"uri": "https://flokkr.github.io/docs/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://flokkr.github.io/docs/runtime/compose/",
+	"title": "Docker compose based hadoop/spark cluster",
+	"tags": [],
+	"description": "",
+	"content": " The https://github.com/flokkr/runtime-compose repository contains example configuration to run various type of clusters (eg. Hadoop HA, Hadoop federation, Spark, etc.)\nUsually the could be started with\ndocker-compose up -d  To scale services you can run\ndocker-compose scale datanode=1  But please note that not all the containers can be scaled up. The master components (such as Hadoop namenode) usually have hardcoded hostnames which avoid the scaling,\nCommon properties    Topic Solution     Configuration management    Source of config files: docker-compose external environment variable file   Configuration preprocessing: envtoconf (Convert environment variables to configuration formats   Automatic restart on config change: Not supported, docker-compose up is required   Provisioning and scheduling    Multihost support NO   Requirements on the hosts docker daemon and docker-compose   Definition of the containers per host N/A, one docker-compose file for the local host   Scheduling (find hosts with available resource) NO, localhost only   Failover on host crash NO   Scale up/down: Easy with docker-compose scale datanode=3   Multi tenancy (multiple cluster) Partial (from multiple checkout directory, after port adjustment)   Network    Network between containers dedicated network per docker-compose file   DNS YES, handled by the docker network   Service discovery NO (DNS based)   Data locality NO   Availability of the ports Published according to the docker-compose files    "
+},
+{
+	"uri": "https://flokkr.github.io/docs/",
+	"title": "Docker images for Open Source bigdata/hadoop projects",
+	"tags": [],
+	"description": "",
+	"content": " Flokkr is an umbrella github organization to collect all of my containerization work for Apache bigdata/datascience projects such as Apache Hadoop or Apache Spark.\nOn high level, there are two main type of the subprojects/git repos under this organization: Containers and runtime configuration examples.\nIf you would like to run a simple Apache bigdata project, open the repository and use the included docker-compose file. If you need a more sophisticated cluster which includes multiple product and different configuration: investigate the runtime repositories and choose a method which is the most appropriate for you.\nContainers All of the containers are based on one smart baseimage defined in flokkr/docker-baseimage. It contains all the configuration loading script (based on environment variables or consul servers) and other extensions (eg. btrace instrumentation).\nTo get more information about the available environment variables check the flokkr/launcher repository.\nAll the other containers can be found with docker- prefix under the flokkr organization.\nThe containers are usually built on travis-ci and pushed to the docker hub instead to use dockerhub automatic buidls due to the limitation of the dockerhub (for example it\u0026rsquo;s hard to generate matrix builds with all the older versions).\nAvailable images:\n   Repository Product     docker-baseimage Base image with all the configuration loading magic   docker-hadoop Apache Hadoop components (hdfs/yarn)   docker-spark Apache Spark components   docker-storm Apache Storm components   docker-zookeeper Apache Zookeeper components   docker-kafka Apache Kafka components   docker-hbase Apache HBase components   docker-zeppelin Apache Zeppelin interface   docker-krb5 Highly insecure kerberos container, with an open REST api to request new kerberos keytab files.    Note: previous version of the containers (and some not yet migrated) can be found under the github.com/elek account.\nRuntime examples Docker image creation is easy, just a few lines to download and unpack the Apache projects. The tricky part is how the containers could work together: service discovery, configuration management, data locality, multi-tenancy, etc.\nThere are various examples how the containers could be used and each of them have a separated repository with the runtime- prefix.\n   Repository Details     runtime-compose docker-composed based pseudo clusters (multiple containers but only for one hosts). Configuration are defined by environment variables. For development and local experiments.   runtime-consul Multi-host real cluster with consul (for storing the configuration and docker-compose definitions) and docker-compose. Small scripts help to maintain the cluster state (restart components on every config change). Full data-locality is achieved by using docker host network.   runtime-nomad Multi-host real cluster with consul (for storing the configuration and docker-compose definitions) and nomad (to start the instances). Small scripts help to maintain the cluster state (restart components on every config change). Full data-locality is achieved by using docker host network.   runtime-swarm Similar to the previous one, but the container scheduling part is simplified with docker-compose + swarm. No host network, so no data-locality. Environment variable based configuration management.   runtime-kubernetes Kubernetes managed cluster with kubernetes ConfigMap based configuration set.    "
+},
+{
+	"uri": "https://flokkr.github.io/docs/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

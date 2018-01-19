@@ -40,10 +40,10 @@ There is just one precondition: the namenode directory should be formatted, but 
       <a href='/'>Home</a>
     </li>
   <li>
-      <a href='https://github.com/flokkr'>Repo</a>
+      <a href='https://github.com/flokkr'>Source</a>
     </li>
   <li>
-      <a href='https://flokkr.github.io'>DOC</a>
+      <a href='https://flokkr.github.io/docs'>Documentation</a>
     </li>
   
   </ul>
@@ -110,7 +110,11 @@ There is just one precondition: the namenode directory should be formatted, but 
 
 <p>There is just one precondition: the namenode directory should be formatted, but it could be handled by a custom launcher script which includes the required steps. For example:</p>
 
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;</span>$ENSURE_NAMENODE_DIR<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+   <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -d <span style="color:#e6db74">&#34;</span>$ENSURE_NAMENODE_DIR<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+      /opt/hadoop/bin/hdfs namenode -format
+        <span style="color:#66d9ef">fi</span>
+<span style="color:#66d9ef">fi</span></code></pre></div>
 
 <p>For HA cluster it&rsquo;s more tricky as we should do everything in the right order.</p>
 

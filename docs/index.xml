@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker images for Open Source bigdata/hadoop projects on Flokkr Documentation</title>
+    <link>https://flokkr.github.io/docs/</link>
+    <description>Recent content in Docker images for Open Source bigdata/hadoop projects on Flokkr Documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 24 Apr 2017 18:36:24 +0200</lastBuildDate>
+    
+	<atom:link href="https://flokkr.github.io/docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>header</title>
+      <link>https://flokkr.github.io/docs/_header/</link>
+      <pubDate>Mon, 24 Apr 2017 18:36:24 +0200</pubDate>
+      
+      <guid>https://flokkr.github.io/docs/_header/</guid>
+      <description>Flokkr documentation</description>
+    </item>
+    
+    <item>
+      <title>Docker compose based hadoop/spark cluster</title>
+      <link>https://flokkr.github.io/docs/runtime/compose/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://flokkr.github.io/docs/runtime/compose/</guid>
+      <description> The https://github.com/flokkr/runtime-compose repository contains example configuration to run various type of clusters (eg. Hadoop HA, Hadoop federation, Spark, etc.)
+Usually the could be started with
+docker-compose up -d  To scale services you can run
+docker-compose scale datanode=1  But please note that not all the containers can be scaled up. The master components (such as Hadoop namenode) usually have hardcoded hostnames which avoid the scaling,
+Common properties    Topic Solution     Configuration management    Source of config files: docker-compose external environment variable file   Configuration preprocessing: envtoconf (Convert environment variables to configuration formats   Automatic restart on config change: Not supported, docker-compose up is required   Provisioning and scheduling    Multihost support NO   Requirements on the hosts docker daemon and docker-compose   Definition of the containers per host N/A, one docker-compose file for the local host   Scheduling (find hosts with available resource) NO, localhost only   Failover on host crash NO   Scale up/down: Easy with docker-compose scale datanode=3   Multi tenancy (multiple cluster) Partial (from multiple checkout directory, after port adjustment)   Network    Network between containers dedicated network per docker-compose file   DNS YES, handled by the docker network   Service discovery NO (DNS based)   Data locality NO   Availability of the ports Published according to the docker-compose files    </description>
+    </item>
+    
+  </channel>
+</rss>
