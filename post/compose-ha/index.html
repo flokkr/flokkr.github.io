@@ -5,13 +5,13 @@
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <meta name='description' content='Recently I had to start different type of Hadoop clusters in my local environment, such as HA, router based federation, federation, etc.
-Hadoop is not created to run in containers but with very low effort it works very well. For example a non-HA cluster could be started easily as the datanode will try to connect to the namenode again and again until the namenode is started.
-There is just one precondition: the namenode directory should be formatted, but it could be handled by a custom launcher script which includes the requried steps.'>
+Hadoop is not designed to run in containers but with very low effort it works very well. For example a non-HA cluster could be started easily as the datanode will try to connect to the namenode again and again until the namenode is started.
+There is just one precondition: the namenode directory should be formatted, but it could be handled by a custom launcher script which includes the required steps.'>
 
 <meta property='og:title' content='Start Hadoop HA cluster with docker-compose • Flokkr.'>
 <meta property='og:description' content='Recently I had to start different type of Hadoop clusters in my local environment, such as HA, router based federation, federation, etc.
-Hadoop is not created to run in containers but with very low effort it works very well. For example a non-HA cluster could be started easily as the datanode will try to connect to the namenode again and again until the namenode is started.
-There is just one precondition: the namenode directory should be formatted, but it could be handled by a custom launcher script which includes the requried steps.'>
+Hadoop is not designed to run in containers but with very low effort it works very well. For example a non-HA cluster could be started easily as the datanode will try to connect to the namenode again and again until the namenode is started.
+There is just one precondition: the namenode directory should be formatted, but it could be handled by a custom launcher script which includes the required steps.'>
 <meta property='og:url' content='http://www.example.com/post/compose-ha/'>
 <meta property='og:site_name' content='Flokkr.'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='hadoop'><meta property='article:tag' content='compose'><meta property='article:tag' content='docker'><meta property='article:published_time' content='2018-01-19T23:12:43&#43;01:00'/><meta property='article:modified_time' content='2018-01-19T23:12:43&#43;01:00'/><meta name='twitter:card' content='summary'>
@@ -106,9 +106,9 @@ There is just one precondition: the namenode directory should be formatted, but 
     <div class='entry-content'>
   <p>Recently I had to start different type of Hadoop clusters in my local environment, such as HA, router based federation, federation, etc.</p>
 
-<p>Hadoop is not created to run in containers but with very low effort it works very well. For example a non-HA cluster could be started easily as the datanode will try to connect to the namenode again and again until the namenode is started.</p>
+<p>Hadoop is not designed to run in containers but with very low effort it works very well. For example a non-HA cluster could be started easily as the datanode will try to connect to the namenode again and again until the namenode is started.</p>
 
-<p>There is just one precondition: the namenode directory should be formatted, but it could be handled by a custom launcher script which includes the requried steps. For example:</p>
+<p>There is just one precondition: the namenode directory should be formatted, but it could be handled by a custom launcher script which includes the required steps. For example:</p>
 
 
 
@@ -120,14 +120,14 @@ There is just one precondition: the namenode directory should be formatted, but 
 <li>Finally the secondary namenodes can be formatted (they need the initalized data in the journalnode).</li>
 </ol>
 
-<p>(Note: yes, since hadoop3 we can have multiple namenodes.)</p>
+<p>(Note: yes, since Hadoop 3 we can have multiple namenodes.)</p>
 
-<p>The flokkr docker images contain a simple extensible <a href="https://github.com/flokkr/launcher" target="_blank">launcher script</a>. It&rsquo;s really just a collection if many conditions: according to the environment variables many action could be executed before the main application. One action is the namenode formatting, but it also contains a few simple utility such as sleep:</p>
+<p>The flokkr docker images contain a simple extensible <a href="https://github.com/flokkr/launcher" target="_blank">launcher script</a>. It&rsquo;s really just a collection of many conditions: according to the environment variables many action could be executed before the main application. One action is the namenode formatting, but it also contains a few simple utility such as sleep:</p>
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;</span>$SLEEP_SECONDS<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
    sleep $SLEEP_SECONDS</code></pre></div>
 
-<p>The final docker-compose file doesn&rsquo;t&rsquo; contain any special just SLEEP_SECOND environment variables to ensure the namenodes are initialized in the right order:</p>
+<p>The final docker-compose file doesn&rsquo;t&rsquo; contain any special, just SLEEP_SECOND environment variables to ensure the namenodes are initialized in the right order:</p>
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">version: <span style="color:#e6db74">&#34;3&#34;</span>
 services:
@@ -202,7 +202,7 @@ services:
 <pre><code>docker-compose scale datanode=10
 </code></pre>
 
-<p>And now you have a running Hadoop-HA cluster.</p>
+<p>And now you have a running Hadoop-HA cluster in almost 1 minute.</p>
 
 </div>
 

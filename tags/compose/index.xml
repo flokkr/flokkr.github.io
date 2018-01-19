@@ -17,8 +17,8 @@
       
       <guid>http://www.example.com/post/compose-ha/</guid>
       <description>Recently I had to start different type of Hadoop clusters in my local environment, such as HA, router based federation, federation, etc.
-Hadoop is not created to run in containers but with very low effort it works very well. For example a non-HA cluster could be started easily as the datanode will try to connect to the namenode again and again until the namenode is started.
-There is just one precondition: the namenode directory should be formatted, but it could be handled by a custom launcher script which includes the requried steps.</description>
+Hadoop is not designed to run in containers but with very low effort it works very well. For example a non-HA cluster could be started easily as the datanode will try to connect to the namenode again and again until the namenode is started.
+There is just one precondition: the namenode directory should be formatted, but it could be handled by a custom launcher script which includes the required steps.</description>
     </item>
     
   </channel>
