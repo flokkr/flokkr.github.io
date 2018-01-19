@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Flokkr.</title>
+    <link>http://www.example.com/tags/</link>
+    <description>Recent content in Tags on Flokkr.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 19 Jan 2018 23:12:43 +0100</lastBuildDate>
+    
+	<atom:link href="http://www.example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Compose</title>
+      <link>http://www.example.com/tags/compose/</link>
+      <pubDate>Fri, 19 Jan 2018 23:12:43 +0100</pubDate>
+      
+      <guid>http://www.example.com/tags/compose/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>http://www.example.com/tags/docker/</link>
+      <pubDate>Fri, 19 Jan 2018 23:12:43 +0100</pubDate>
+      
+      <guid>http://www.example.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hadoop</title>
+      <link>http://www.example.com/tags/hadoop/</link>
+      <pubDate>Fri, 19 Jan 2018 23:12:43 +0100</pubDate>
+      
+      <guid>http://www.example.com/tags/hadoop/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

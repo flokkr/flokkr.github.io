@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Flokkr.</title>
+    <link>http://www.example.com/tags/docker/</link>
+    <description>Recent content in Docker on Flokkr.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 19 Jan 2018 23:12:43 +0100</lastBuildDate>
+    
+	<atom:link href="http://www.example.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Start Hadoop HA cluster with docker-compose</title>
+      <link>http://www.example.com/post/compose-ha/</link>
+      <pubDate>Fri, 19 Jan 2018 23:12:43 +0100</pubDate>
+      
+      <guid>http://www.example.com/post/compose-ha/</guid>
+      <description>Recently I had to start different type of Hadoop clusters in my local environment, such as HA, router based federation, federation, etc.
+Hadoop is not created to run in containers but with very low effort it works very well. For example a non-HA cluster could be started easily as the datanode will try to connect to the namenode again and again until the namenode is started.
+There is just one precondition: the namenode directory should be formatted, but it could be handled by a custom launcher script which includes the requried steps.</description>
+    </item>
+    
+  </channel>
+</rss>
