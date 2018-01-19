@@ -146,8 +146,6 @@ services:
           ENSURE_NAMENODE_DIR: <span style="color:#e6db74">&#34;/tmp/hadoop-hadoop/dfs/name&#34;</span>
           SLEEP_SECONDS: <span style="color:#ae81ff">20</span>
       command: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;namenode&#34;</span>]
-      volumes:
-         - ./namenodeformat.sh:/opt/launcher/plugins/012_namenodeformat/namenodeformat.sh
    namenode<span style="color:#ae81ff">2</span>:
       image: flokkr/hadoop:${VERSION}
       hostname: namenode<span style="color:#ae81ff">2</span>
@@ -159,8 +157,6 @@ services:
           ENSURE_STANDBY_NAMENODE_DIR: <span style="color:#e6db74">&#34;/tmp/hadoop-hadoop/dfs/name&#34;</span>
           SLEEP_SECONDS: <span style="color:#ae81ff">40</span>
       command: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;namenode&#34;</span>]
-      volumes:
-         - ./namenodeformat.sh:/opt/launcher/plugins/012_namenodeformat/namenodeformat.sh
    journal<span style="color:#ae81ff">1</span>:
       image: flokkr/hadoop:${VERSION}
       hostname: journal<span style="color:#ae81ff">1</span>
