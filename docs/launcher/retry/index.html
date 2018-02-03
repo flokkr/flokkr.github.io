@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.34" />
 
-<title>Docker compose based hadoop/spark cluster :: Flokkr Documentation</title>
+<title>Retry plugin :: Flokkr Documentation</title>
 <link rel="shortcut icon" href="/docs/images/favicon.png" type="image/x-icon" />
 <link href="/docs/css/nucleus.css" rel="stylesheet">
 <link href="/docs/css/font-awesome.min.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 
     
   </head>
-  <body data-url="/docs/runtime/compose/">
+  <body data-url="/docs/launcher/retry/">
     
       <div id="headermain"></div>
 <nav id="sidebar" class="showVisitedLinks">
@@ -65,22 +65,22 @@
             <li data-nav-id="/docs/" class="dd-item">
             <a href="/docs/"><i class="fa fa-fw fa-home"></i></a>
             </li>
-    <li data-nav-id="/docs/runtime/" class="dd-item parent">
+    <li data-nav-id="/docs/runtime/" class="dd-item">
       <a href="/docs/runtime/">
-        <span>Runtime environments</span>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+        <span>Runtime environments</span><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </a>
         <ul>
-      <li data-nav-id="/docs/runtime/compose/" class="dd-item active">
+      <li data-nav-id="/docs/runtime/compose/" class="dd-item">
         <a href="/docs/runtime/compose/">
           <span>Docker compose based hadoop/spark cluster</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
     </li>
         </ul>
     </li>
-    <li data-nav-id="/docs/launcher/" class="dd-item">
+    <li data-nav-id="/docs/launcher/" class="dd-item parent">
       <a href="/docs/launcher/">
-        <span>Flokkr launcher</span><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+        <span>Flokkr launcher</span>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </a>
         <ul>
       <li data-nav-id="/docs/launcher/envtoconf/" class="dd-item">
@@ -103,7 +103,7 @@
           <span>Kerberos plugin</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
     </li>
-      <li data-nav-id="/docs/launcher/retry/" class="dd-item">
+      <li data-nav-id="/docs/launcher/retry/" class="dd-item active">
         <a href="/docs/launcher/retry/">
           <span>Retry plugin</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
@@ -146,7 +146,7 @@
       
       
     <div id="top-github-link">
-      <a class="github-link" href="https://github.com/flokkr/docs/edit/master/exampleSite/content/runtime/compose.md" target="blank">
+      <a class="github-link" href="https://github.com/flokkr/docs/edit/master/exampleSite/content/launcher/retry.md" target="blank">
         <i class="fa fa-code-fork"></i>
         Edit page
       </a>
@@ -166,7 +166,7 @@
 
 
 
- <a href='/docs/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/docs/runtime/'>Runtime environments</a> > Docker compose based hadoop/spark cluster
+ <a href='/docs/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/docs/launcher/'>Flokkr launcher</a> > Retry plugin
 
  
 
@@ -183,7 +183,10 @@
 <ul>
 <li>
 <ul>
-<li><a href="#common-properties">Common properties</a></li>
+<li>
+<ul>
+<li><a href="#configuration">Configuration</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -196,7 +199,7 @@
 
 <div id="body-inner">
   
-    <h1>Docker compose based hadoop/spark cluster</h1>
+    <h1>Retry plugin</h1>
   
 
 
@@ -206,119 +209,30 @@
     
     
 
-<p>The <a href="runtime-compose">https://github.com/flokkr/runtime-compose</a> repository contains example configuration to run various type of clusters (eg. Hadoop HA, Hadoop federation, Spark, etc.)</p>
+<p>The plugin tries to run the entrypoint of the image multiple times. If the process has been exited with non zero exit code, it tries to rerun the command after a sleep. The sleep time increasing with every iteration and the whole process will be stopped anyway after a fix amount of retry. If the process run enough time (60s) the failure counter and sleep time is reseted.</p>
 
-<p>Usually the could be started with</p>
-
-<pre><code>docker-compose up -d
-</code></pre>
-
-<p>To scale services you can run</p>
-
-<pre><code>docker-compose scale datanode=1
-</code></pre>
-
-<p>But please note that not all the containers can be scaled up. The master components (such as Hadoop namenode) usually have hardcoded hostnames which avoid the scaling,</p>
-
-<h2 id="common-properties">Common properties</h2>
+<h3 id="configuration">Configuration</h3>
 
 <table>
 <thead>
 <tr>
-<th>Topic</th>
-<th>Solution</th>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><strong>Configuration management</strong></td>
-<td></td>
+<td>RETRY_NUMBER</td>
+<td>10</td>
+<td>Number of times the process will be restarted (in case of non-zero exit code</td>
 </tr>
 
 <tr>
-<td>Source of config files:</td>
-<td>docker-compose external environment variable file</td>
-</tr>
-
-<tr>
-<td>Configuration preprocessing:</td>
-<td><strong>envtoconf</strong> (Convert environment variables to configuration formats</td>
-</tr>
-
-<tr>
-<td>Automatic restart on config change:</td>
-<td>Not supported, docker-compose up is required</td>
-</tr>
-
-<tr>
-<td><strong>Provisioning and scheduling</strong></td>
-<td></td>
-</tr>
-
-<tr>
-<td>Multihost support</td>
-<td>NO</td>
-</tr>
-
-<tr>
-<td>Requirements on the hosts</td>
-<td>docker daemon and docker-compose</td>
-</tr>
-
-<tr>
-<td>Definition of the containers per host</td>
-<td>N/A, one docker-compose file for the local host</td>
-</tr>
-
-<tr>
-<td>Scheduling (find hosts with available resource)</td>
-<td>NO, localhost only</td>
-</tr>
-
-<tr>
-<td>Failover on host crash</td>
-<td>NO</td>
-</tr>
-
-<tr>
-<td>Scale up/down:</td>
-<td>Easy with <code>docker-compose scale datanode=3</code></td>
-</tr>
-
-<tr>
-<td>Multi tenancy (multiple cluster)</td>
-<td>Partial (from multiple checkout directory, after port adjustment)</td>
-</tr>
-
-<tr>
-<td><strong>Network</strong></td>
-<td></td>
-</tr>
-
-<tr>
-<td>Network between containers</td>
-<td>dedicated network per docker-compose file</td>
-</tr>
-
-<tr>
-<td>DNS</td>
-<td>YES, handled by the docker network</td>
-</tr>
-
-<tr>
-<td>Service discovery</td>
-<td>NO (DNS based)</td>
-</tr>
-
-<tr>
-<td>Data locality</td>
-<td>NO</td>
-</tr>
-
-<tr>
-<td>Availability of the ports</td>
-<td>Published according to the docker-compose files</td>
+<td>RETRY_NORMAL_RUN_DURATION</td>
+<td>60</td>
+<td>After this amount of seconds the RETRY_NUMBER counter will be reseted. Example: After 5 tries the process is started and run successfully 5 minutes. After a non-zer exit, it will be rerun RETRY_NUM (10) times. Example 2: After 5 tries the process is starts, runs for 40 seconds, and exits. The retry will continue with the reamining 5 try.</td>
 </tr>
 </tbody>
 </table>
@@ -333,8 +247,8 @@
 </div>
 
 <div id="navigation">
-<a class="nav nav-prev" href="/docs/runtime/" title="Runtime environments"> <i class="fa fa-chevron-left"></i></a>
-    <a class="nav nav-next" href="/docs/launcher/" title="Flokkr launcher" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/docs/launcher/kerberos/" title="Kerberos plugin"> <i class="fa fa-chevron-left"></i></a>
+    <a class="nav nav-next" href="/docs/launcher/sleep/" title="Sleep plugin" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
 
 </section>
 <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">

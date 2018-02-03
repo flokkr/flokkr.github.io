@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.34" />
 
-<title>Docker compose based hadoop/spark cluster :: Flokkr Documentation</title>
+<title>Consul config loading :: Flokkr Documentation</title>
 <link rel="shortcut icon" href="/docs/images/favicon.png" type="image/x-icon" />
 <link href="/docs/css/nucleus.css" rel="stylesheet">
 <link href="/docs/css/font-awesome.min.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 
     
   </head>
-  <body data-url="/docs/runtime/compose/">
+  <body data-url="/docs/launcher/consul/">
     
       <div id="headermain"></div>
 <nav id="sidebar" class="showVisitedLinks">
@@ -65,22 +65,22 @@
             <li data-nav-id="/docs/" class="dd-item">
             <a href="/docs/"><i class="fa fa-fw fa-home"></i></a>
             </li>
-    <li data-nav-id="/docs/runtime/" class="dd-item parent">
+    <li data-nav-id="/docs/runtime/" class="dd-item">
       <a href="/docs/runtime/">
-        <span>Runtime environments</span>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+        <span>Runtime environments</span><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </a>
         <ul>
-      <li data-nav-id="/docs/runtime/compose/" class="dd-item active">
+      <li data-nav-id="/docs/runtime/compose/" class="dd-item">
         <a href="/docs/runtime/compose/">
           <span>Docker compose based hadoop/spark cluster</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
     </li>
         </ul>
     </li>
-    <li data-nav-id="/docs/launcher/" class="dd-item">
+    <li data-nav-id="/docs/launcher/" class="dd-item parent">
       <a href="/docs/launcher/">
-        <span>Flokkr launcher</span><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+        <span>Flokkr launcher</span>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </a>
         <ul>
       <li data-nav-id="/docs/launcher/envtoconf/" class="dd-item">
@@ -88,7 +88,7 @@
           <span>Configuration transformer plugin</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
     </li>
-      <li data-nav-id="/docs/launcher/consul/" class="dd-item">
+      <li data-nav-id="/docs/launcher/consul/" class="dd-item active">
         <a href="/docs/launcher/consul/">
           <span>Consul config loading</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
@@ -146,7 +146,7 @@
       
       
     <div id="top-github-link">
-      <a class="github-link" href="https://github.com/flokkr/docs/edit/master/exampleSite/content/runtime/compose.md" target="blank">
+      <a class="github-link" href="https://github.com/flokkr/docs/edit/master/exampleSite/content/launcher/consul.md" target="blank">
         <i class="fa fa-code-fork"></i>
         Edit page
       </a>
@@ -166,7 +166,7 @@
 
 
 
- <a href='/docs/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/docs/runtime/'>Runtime environments</a> > Docker compose based hadoop/spark cluster
+ <a href='/docs/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/docs/launcher/'>Flokkr launcher</a> > Consul config loading
 
  
 
@@ -183,7 +183,14 @@
 <ul>
 <li>
 <ul>
-<li><a href="#common-properties">Common properties</a></li>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#btrace-btrace-instrumentation">BTRACE: btrace instrumentation</a></li>
+<li><a href="#configuration">Configuration</a></li>
+</ul></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -196,7 +203,7 @@
 
 <div id="body-inner">
   
-    <h1>Docker compose based hadoop/spark cluster</h1>
+    <h1>Consul config loading</h1>
   
 
 
@@ -206,122 +213,93 @@
     
     
 
-<p>The <a href="runtime-compose">https://github.com/flokkr/runtime-compose</a> repository contains example configuration to run various type of clusters (eg. Hadoop HA, Hadoop federation, Spark, etc.)</p>
+<p>Could be activated with <code>CONFIG_TYPE=consul</code></p>
 
-<p>Usually the could be started with</p>
+<ul>
+<li>The starter script list the configuration file names based on a consul key prefix. All the files will be downloaded from the consul key value store and the application process will be started with consul-template (enable an automatic restart in case of configuration file change)</li>
+</ul>
 
-<pre><code>docker-compose up -d
-</code></pre>
-
-<p>To scale services you can run</p>
-
-<pre><code>docker-compose scale datanode=1
-</code></pre>
-
-<p>But please note that not all the containers can be scaled up. The master components (such as Hadoop namenode) usually have hardcoded hostnames which avoid the scaling,</p>
-
-<h2 id="common-properties">Common properties</h2>
+<p>The source code of the consul based configuration loading and launcher is available at the <a href="https://github.com/elek/consul-launcher">elek/consul-launcher</a> repository.</p>
 
 <table>
 <thead>
 <tr>
-<th>Topic</th>
-<th>Solution</th>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><strong>Configuration management</strong></td>
+<td>CONF_DIR</td>
+<td><em>Set in the docker container definitions</em></td>
+<td>The location where the configuration files will be saved.</td>
+</tr>
+
+<tr>
+<td>CONFIG_TYPE</td>
+<td>consul</td>
+<td>For compatibility reason. If the value is consul, the consul based configuration handling is active.</td>
+</tr>
+
+<tr>
+<td>CONSUL_PATH</td>
+<td>conf</td>
+<td>The path of the subtree in the consul where the configurations are.</td>
+</tr>
+
+<tr>
+<td>CONSUL_KEY</td>
 <td></td>
-</tr>
-
-<tr>
-<td>Source of config files:</td>
-<td>docker-compose external environment variable file</td>
-</tr>
-
-<tr>
-<td>Configuration preprocessing:</td>
-<td><strong>envtoconf</strong> (Convert environment variables to configuration formats</td>
-</tr>
-
-<tr>
-<td>Automatic restart on config change:</td>
-<td>Not supported, docker-compose up is required</td>
-</tr>
-
-<tr>
-<td><strong>Provisioning and scheduling</strong></td>
-<td></td>
-</tr>
-
-<tr>
-<td>Multihost support</td>
-<td>NO</td>
-</tr>
-
-<tr>
-<td>Requirements on the hosts</td>
-<td>docker daemon and docker-compose</td>
-</tr>
-
-<tr>
-<td>Definition of the containers per host</td>
-<td>N/A, one docker-compose file for the local host</td>
-</tr>
-
-<tr>
-<td>Scheduling (find hosts with available resource)</td>
-<td>NO, localhost only</td>
-</tr>
-
-<tr>
-<td>Failover on host crash</td>
-<td>NO</td>
-</tr>
-
-<tr>
-<td>Scale up/down:</td>
-<td>Easy with <code>docker-compose scale datanode=3</code></td>
-</tr>
-
-<tr>
-<td>Multi tenancy (multiple cluster)</td>
-<td>Partial (from multiple checkout directory, after port adjustment)</td>
-</tr>
-
-<tr>
-<td><strong>Network</strong></td>
-<td></td>
-</tr>
-
-<tr>
-<td>Network between containers</td>
-<td>dedicated network per docker-compose file</td>
-</tr>
-
-<tr>
-<td>DNS</td>
-<td>YES, handled by the docker network</td>
-</tr>
-
-<tr>
-<td>Service discovery</td>
-<td>NO (DNS based)</td>
-</tr>
-
-<tr>
-<td>Data locality</td>
-<td>NO</td>
-</tr>
-
-<tr>
-<td>Availability of the ports</td>
-<td>Published according to the docker-compose files</td>
+<td>The  path where the configuration for this container should be downloaded from. The effective path will be <code>$CONSUL_PATH/$CONSUL_KEY</code></td>
 </tr>
 </tbody>
 </table>
+
+<h4 id="btrace-btrace-instrumentation">BTRACE: btrace instrumentation</h4>
+
+<p>Could be enabled with setting <code>BTRACE_ENABLED=true</code> or just setting <code>BTRACE_SCRIPT</code>.</p>
+
+<p>It adds btrace javaagent configuration to the JAVA_OPTS (or any other opts defined by BTRACE_OPTS_VAR). The standard output is redirected to <code>/tmp/output.log</code>, and the btrace output will be displayed on the standard output (over a <code>/tmp/btrace.out</code> file)</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>CONF_DIR</td>
+<td><em>Set in the docker container definitions</em></td>
+<td>The location where the configuration files will be saved.</td>
+</tr>
+
+<tr>
+<td>BTRACE_SCRIPT</td>
+<td><notset></td>
+<td>The location of the compiled btrace script. Coule be absolute or relative to the <code>/opt/plugins/020_btrace/btrace</code></td>
+</tr>
+
+<tr>
+<td>BTRACE_OPTS_VAR</td>
+<td>JAVA_OPTS</td>
+<td>The name of the shell variable where the agent parameters should be injected.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="configuration">Configuration</h4>
+
+<ul>
+<li><p><code>CONSUL_PATH</code> defines the root of the subtree where the configuration are downloaded from. The root could also contain a configuration <code>config.ini</code>. Default is <code>conf</code></p></li>
+
+<li><p><code>CONSUL_KEY</code> is optional. It defines a subdirectory to download the the config files. If both <code>CONSUL_PATH</code> and <code>CONSUL_KEY</code> are defined, the config files will be downloaded from <code>$CONSUL_PATH/$CONSUL_KEY</code> but the config file will be read from <code>$CONSUL_PATH/config.ini</code></p></li>
+</ul>
 
 
     
@@ -333,8 +311,8 @@
 </div>
 
 <div id="navigation">
-<a class="nav nav-prev" href="/docs/runtime/" title="Runtime environments"> <i class="fa fa-chevron-left"></i></a>
-    <a class="nav nav-next" href="/docs/launcher/" title="Flokkr launcher" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/docs/launcher/envtoconf/" title="Configuration transformer plugin"> <i class="fa fa-chevron-left"></i></a>
+    <a class="nav nav-next" href="/docs/launcher/installer/" title="Installer plugin" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
 
 </section>
 <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">

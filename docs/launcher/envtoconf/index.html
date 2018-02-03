@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.34" />
 
-<title>Docker compose based hadoop/spark cluster :: Flokkr Documentation</title>
+<title>Configuration transformer plugin :: Flokkr Documentation</title>
 <link rel="shortcut icon" href="/docs/images/favicon.png" type="image/x-icon" />
 <link href="/docs/css/nucleus.css" rel="stylesheet">
 <link href="/docs/css/font-awesome.min.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 
     
   </head>
-  <body data-url="/docs/runtime/compose/">
+  <body data-url="/docs/launcher/envtoconf/">
     
       <div id="headermain"></div>
 <nav id="sidebar" class="showVisitedLinks">
@@ -65,25 +65,25 @@
             <li data-nav-id="/docs/" class="dd-item">
             <a href="/docs/"><i class="fa fa-fw fa-home"></i></a>
             </li>
-    <li data-nav-id="/docs/runtime/" class="dd-item parent">
+    <li data-nav-id="/docs/runtime/" class="dd-item">
       <a href="/docs/runtime/">
-        <span>Runtime environments</span>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+        <span>Runtime environments</span><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </a>
         <ul>
-      <li data-nav-id="/docs/runtime/compose/" class="dd-item active">
+      <li data-nav-id="/docs/runtime/compose/" class="dd-item">
         <a href="/docs/runtime/compose/">
           <span>Docker compose based hadoop/spark cluster</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
     </li>
         </ul>
     </li>
-    <li data-nav-id="/docs/launcher/" class="dd-item">
+    <li data-nav-id="/docs/launcher/" class="dd-item parent">
       <a href="/docs/launcher/">
-        <span>Flokkr launcher</span><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+        <span>Flokkr launcher</span>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </a>
         <ul>
-      <li data-nav-id="/docs/launcher/envtoconf/" class="dd-item">
+      <li data-nav-id="/docs/launcher/envtoconf/" class="dd-item active">
         <a href="/docs/launcher/envtoconf/">
           <span>Configuration transformer plugin</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
@@ -146,7 +146,7 @@
       
       
     <div id="top-github-link">
-      <a class="github-link" href="https://github.com/flokkr/docs/edit/master/exampleSite/content/runtime/compose.md" target="blank">
+      <a class="github-link" href="https://github.com/flokkr/docs/edit/master/exampleSite/content/launcher/envtoconf.md" target="blank">
         <i class="fa fa-code-fork"></i>
         Edit page
       </a>
@@ -166,7 +166,7 @@
 
 
 
- <a href='/docs/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/docs/runtime/'>Runtime environments</a> > Docker compose based hadoop/spark cluster
+ <a href='/docs/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/docs/launcher/'>Flokkr launcher</a> > Configuration transformer plugin
 
  
 
@@ -183,7 +183,17 @@
 <ul>
 <li>
 <ul>
-<li><a href="#common-properties">Common properties</a></li>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#naming-convention-for-set-config-keys-from-enviroment-variables">Naming convention for set config keys from enviroment variables</a></li>
+<li><a href="#available-transformation">Available transformation</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -196,7 +206,7 @@
 
 <div id="body-inner">
   
-    <h1>Docker compose based hadoop/spark cluster</h1>
+    <h1>Configuration transformer plugin</h1>
   
 
 
@@ -206,122 +216,64 @@
     
     
 
-<p>The <a href="runtime-compose">https://github.com/flokkr/runtime-compose</a> repository contains example configuration to run various type of clusters (eg. Hadoop HA, Hadoop federation, Spark, etc.)</p>
+<p>Could be activated by <code>CONFIG_TYPE=simple</code> settings, but it&rsquo;s the default.</p>
 
-<p>Usually the could be started with</p>
+<p>Every configuration could be defined with environment variables, and they will be converted finally to <em>hadoop xml, properties, conf</em> or other format. The destination format (and the destination file name) is defined with the name of the environment variable according to a naming convention.</p>
 
-<pre><code>docker-compose up -d
+<p>The generated files will be saved to the <code>$CONF_DIR</code> directory.</p>
+
+<p>The source code of the converter utility can be found in a <a href="https://github.com/elek/envtoconf">separated repository</a>.</p>
+
+<h5 id="naming-convention-for-set-config-keys-from-enviroment-variables">Naming convention for set config keys from enviroment variables</h5>
+
+<p>To set any configuration variable you shold follow the following pattern:</p>
+
+<pre><code>NAME.EXTENSION_configkey=VALUE
 </code></pre>
 
-<p>To scale services you can run</p>
+<p>The extension could be any extension which has a predefined transformation (currently xml, yaml, properties, configuration, yaml, env, sh, conf, cfg)</p>
 
-<pre><code>docker-compose scale datanode=1
+<p>examples:</p>
+
+<pre><code>CORE-SITE_fs.default.name: &quot;hdfs://localhost:9000&quot;
+HDFS-SITE_dfs_namenode_rpc-address: &quot;localhost:9000&quot;
+HBASE-SITE.XML_hbase_zookeeper_quorum: &quot;localhost&quot;
 </code></pre>
 
-<p>But please note that not all the containers can be scaled up. The master components (such as Hadoop namenode) usually have hardcoded hostnames which avoid the scaling,</p>
+<p>In some rare cases the transformation and the extension should be different. For example the kafka <code>server.properties</code> should be in the format <code>key=value</code> which is the <code>cfg</code> transformation in our system. In that case you can postfix the extension with an additional format specifier:</p>
 
-<h2 id="common-properties">Common properties</h2>
+<pre><code>NAME.EXTENSION!FORMAT_configkey=VALUE
+</code></pre>
 
-<table>
-<thead>
-<tr>
-<th>Topic</th>
-<th>Solution</th>
-</tr>
-</thead>
+<p>For example:</p>
 
-<tbody>
-<tr>
-<td><strong>Configuration management</strong></td>
-<td></td>
-</tr>
+<pre><code>SERVER.CONF!CFG_zookeeper.address=zookeeper:2181
+</code></pre>
 
-<tr>
-<td>Source of config files:</td>
-<td>docker-compose external environment variable file</td>
-</tr>
+<h5 id="available-transformation">Available transformation</h5>
 
-<tr>
-<td>Configuration preprocessing:</td>
-<td><strong>envtoconf</strong> (Convert environment variables to configuration formats</td>
-</tr>
+<ul>
+<li><p>xml: HADOOP xml file format</p></li>
 
-<tr>
-<td>Automatic restart on config change:</td>
-<td>Not supported, docker-compose up is required</td>
-</tr>
+<li><p>properties: key value pairs with <code>:</code> as separator</p></li>
 
-<tr>
-<td><strong>Provisioning and scheduling</strong></td>
-<td></td>
-</tr>
+<li><p>cfg: key value pairs with <code>=</code> as separator</p></li>
 
-<tr>
-<td>Multihost support</td>
-<td>NO</td>
-</tr>
+<li><p>conf: key value pairs with space as spearator (spark-defaults is an example)</p></li>
 
-<tr>
-<td>Requirements on the hosts</td>
-<td>docker daemon and docker-compose</td>
-</tr>
+<li><p>env: key value paris with <code>=</code> as separator</p></li>
 
-<tr>
-<td>Definition of the containers per host</td>
-<td>N/A, one docker-compose file for the local host</td>
-</tr>
+<li><p>sh: as the env but also includes the export keyword</p>
 
-<tr>
-<td>Scheduling (find hosts with available resource)</td>
-<td>NO, localhost only</td>
-</tr>
+<p>##### Configuration reference</p>
 
-<tr>
-<td>Failover on host crash</td>
-<td>NO</td>
-</tr>
+<p>The plugin itself could be configured with the following environment variables.</p></li>
+</ul>
 
-<tr>
-<td>Scale up/down:</td>
-<td>Easy with <code>docker-compose scale datanode=3</code></td>
-</tr>
-
-<tr>
-<td>Multi tenancy (multiple cluster)</td>
-<td>Partial (from multiple checkout directory, after port adjustment)</td>
-</tr>
-
-<tr>
-<td><strong>Network</strong></td>
-<td></td>
-</tr>
-
-<tr>
-<td>Network between containers</td>
-<td>dedicated network per docker-compose file</td>
-</tr>
-
-<tr>
-<td>DNS</td>
-<td>YES, handled by the docker network</td>
-</tr>
-
-<tr>
-<td>Service discovery</td>
-<td>NO (DNS based)</td>
-</tr>
-
-<tr>
-<td>Data locality</td>
-<td>NO</td>
-</tr>
-
-<tr>
-<td>Availability of the ports</td>
-<td>Published according to the docker-compose files</td>
-</tr>
-</tbody>
-</table>
+<p>| Name        | Default                                  | Description                              |
+   | &mdash;&mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- |
+   | CONF_DIR    | <em>Set in the docker container definitions</em> | The location where the configuration files will be saved. |
+   | CONFIG_TYPE | simple                                   | For compatibility reason. If the value is simple, the conversion is active. |</p>
 
 
     
@@ -333,8 +285,8 @@
 </div>
 
 <div id="navigation">
-<a class="nav nav-prev" href="/docs/runtime/" title="Runtime environments"> <i class="fa fa-chevron-left"></i></a>
-    <a class="nav nav-next" href="/docs/launcher/" title="Flokkr launcher" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/docs/launcher/" title="Flokkr launcher"> <i class="fa fa-chevron-left"></i></a>
+    <a class="nav nav-next" href="/docs/launcher/consul/" title="Consul config loading" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
 
 </section>
 <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
