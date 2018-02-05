@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.34" />
 
-<title>Sleep plugin :: Flokkr Documentation</title>
+<title>Nomad :: Flokkr Documentation</title>
 <link rel="shortcut icon" href="/docs/images/favicon.png" type="image/x-icon" />
 <link href="/docs/css/nucleus.css" rel="stylesheet">
 <link href="/docs/css/font-awesome.min.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 
     
   </head>
-  <body data-url="/docs/launcher/sleep/">
+  <body data-url="/docs/runtime/nomad/">
     
       <div id="headermain"></div>
 <nav id="sidebar" class="showVisitedLinks">
@@ -65,7 +65,7 @@
             <li data-nav-id="/docs/" class="dd-item">
             <a href="/docs/"><i class="fa fa-fw fa-home"></i></a>
             </li>
-    <li data-nav-id="/docs/launcher/" class="dd-item parent alwaysopen">
+    <li data-nav-id="/docs/launcher/" class="dd-item alwaysopen">
       <a href="/docs/launcher/">
         <span>Flokkr launcher</span>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
@@ -96,14 +96,14 @@
           <span>Retry plugin</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
     </li>
-      <li data-nav-id="/docs/launcher/sleep/" class="dd-item active">
+      <li data-nav-id="/docs/launcher/sleep/" class="dd-item">
         <a href="/docs/launcher/sleep/">
           <span>Sleep plugin</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
     </li>
         </ul>
     </li>
-    <li data-nav-id="/docs/runtime/" class="dd-item alwaysopen">
+    <li data-nav-id="/docs/runtime/" class="dd-item parent alwaysopen">
       <a href="/docs/runtime/">
         <span>Runtime environments</span>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
@@ -124,7 +124,7 @@
           <span>Kubernetes</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
     </li>
-      <li data-nav-id="/docs/runtime/nomad/" class="dd-item">
+      <li data-nav-id="/docs/runtime/nomad/" class="dd-item active">
         <a href="/docs/runtime/nomad/">
           <span>Nomad</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
@@ -162,7 +162,7 @@
       
       
     <div id="top-github-link">
-      <a class="github-link" href="https://github.com/flokkr/docs/edit/master/exampleSite/content/launcher/sleep.md" target="blank">
+      <a class="github-link" href="https://github.com/flokkr/docs/edit/master/exampleSite/content/runtime/nomad.md" target="blank">
         <i class="fa fa-code-fork"></i>
         Edit page
       </a>
@@ -182,7 +182,7 @@
 
 
 
- <a href='/docs/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/docs/launcher/'>Flokkr launcher</a> > Sleep plugin
+ <a href='/docs/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/docs/runtime/'>Runtime environments</a> > Nomad
 
  
 
@@ -199,13 +199,13 @@
 <ul>
 <li>
 <ul>
-<li>
+<li><a href="#getting-started">Getting started</a>
 <ul>
-<li>
-<ul>
-<li><a href="#sleep-sleep-for-a-specified-amount-of-time">SLEEP: sleep for a specified amount of time.</a></li>
+<li><a href="#prerequisits">Prerequisits</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#nomad">Nomad</a></li>
 </ul></li>
-</ul></li>
+<li><a href="#attributes">Attributes</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -218,7 +218,7 @@
 
 <div id="body-inner">
   
-    <h1>Sleep plugin</h1>
+    <h1>Nomad</h1>
   
 
 
@@ -228,22 +228,158 @@
     
     
 
-<h4 id="sleep-sleep-for-a-specified-amount-of-time">SLEEP: sleep for a specified amount of time.</h4>
+<p>The <a href="https://github.com/flokkr/runtime-nomad">https://github.com/flokkr/runtime-nomad</a> contains an example to use custom dockerized clusters based on the <a href="https://github.com/flokkr/flokkr">flokkr</a> docker images.</p>
+
+<p>This is a custom solution where the configuration management is solved with consul and custom upload/download scripts. But it highly flexible, for example all the components could restart automatically in case of any configuration change.</p>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>You need a cluster. use terraform or any other tool to start it.</p>
+
+<h3 id="prerequisits">Prerequisits</h3>
+
+<ul>
+<li>Install docker to the nodes</li>
+<li>Install consul to every node</li>
+<li>Install nomad to the nodes</li>
+<li>Install sigil (<a href="http://github.com/gliderlabs/sigil">http://github.com/gliderlabs/sigil</a>)</li>
+</ul>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>Configuration is stored in consul and downloaded by every docker image.</p>
+
+<p>First you need a configuration set:</p>
+
+<pre><code>git clone https://github.com/flokkr/configuration.git
+</code></pre>
+
+<p>You should install the configuration upload (which uploads the configuration with additional preprcessing:</p>
+
+<pre><code>go get github.com/flokkr/consync
+</code></pre>
+
+<p>And now you can upload the configuration:</p>
+
+<pre><code>consync -dir ~/projects/flokkr/configuration -consul node-1 -discovery consul
+</code></pre>
+
+<p>Where node-1 is the hostname of a consul node</p>
+
+<h3 id="nomad">Nomad</h3>
+
+<p>Now you can start the images with</p>
+
+<pre><code>export NOMAD_ADDR=http://node-1:4646
+</code></pre>
+
+<p>And finally:</p>
+
+<pre><code>./apply.sh namenode.nomad
+...
+</code></pre>
+
+<p>Note: apply.sh is a short script to do client side templating using the sigil utility.</p>
+
+<h2 id="attributes">Attributes</h2>
 
 <table>
 <thead>
 <tr>
-<th>Name</th>
-<th>Default</th>
-<th>Description</th>
+<th>Topic</th>
+<th>Solution</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>SLEEP_SECONDS</td>
-<td><notset></td>
-<td>If set, the <code>sleep</code> bash command will be called with the value of the environment variable. Better to not use this plugin, if possible.</td>
+<td><strong>Configuration management</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Source of config files:</td>
+<td>Consul server (envtoconf can&rsquo;t be used as nomad can&rsquo;t use non-regular env variables)</td>
+</tr>
+
+<tr>
+<td>Configuration preprocessing:</td>
+<td><strong>consync</strong> (Upload configuration to the consul server)</td>
+</tr>
+
+<tr>
+<td>Automatic restart on config change:</td>
+<td>Supported by the consul plugin of the baseimage. Listens on changes on the consul side</td>
+</tr>
+
+<tr>
+<td><strong>Provisioning and scheduling</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Multihost support</td>
+<td>Yes. Nomad agents should run everywhere</td>
+</tr>
+
+<tr>
+<td>Requirements on the hosts</td>
+<td>Consul and Nomad agents</td>
+</tr>
+
+<tr>
+<td>Definition of the containers per host</td>
+<td>Nomad job descriptors</td>
+</tr>
+
+<tr>
+<td>Scheduling (find hosts with available resource)</td>
+<td>Yes, fine-grained constraint rules</td>
+</tr>
+
+<tr>
+<td>Failover on host crash</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>Scale up/down:</td>
+<td>With mondifying the Nomad job specifications</td>
+</tr>
+
+<tr>
+<td>Multi tenancy (multiple cluster)</td>
+<td>NO (Host network)</td>
+</tr>
+
+<tr>
+<td><strong>Network</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Network between containers</td>
+<td>Host network</td>
+</tr>
+
+<tr>
+<td>DNS</td>
+<td>Yes, handled by the OS/Cloud environment (Host network)</td>
+</tr>
+
+<tr>
+<td>Service discovery</td>
+<td>Required for flexible scheduling (Consul based)</td>
+</tr>
+
+<tr>
+<td>Data locality</td>
+<td>Yes, Full</td>
+</tr>
+
+<tr>
+<td>Availability of the ports</td>
+<td>All of them are available (Host network)</td>
 </tr>
 </tbody>
 </table>
@@ -258,8 +394,8 @@
 </div>
 
 <div id="navigation">
-<a class="nav nav-prev" href="/docs/launcher/retry/" title="Retry plugin"> <i class="fa fa-chevron-left"></i></a>
-    <a class="nav nav-next" href="/docs/runtime/" title="Runtime environments" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/docs/runtime/kubernetes/" title="Kubernetes"> <i class="fa fa-chevron-left"></i></a>
+    <a class="nav nav-next" href="/docs/runtime/swarm/" title="Docker Swarm" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
 
 </section>
 <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">

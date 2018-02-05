@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.34" />
 
-<title>Sleep plugin :: Flokkr Documentation</title>
+<title>Docker Swarm :: Flokkr Documentation</title>
 <link rel="shortcut icon" href="/docs/images/favicon.png" type="image/x-icon" />
 <link href="/docs/css/nucleus.css" rel="stylesheet">
 <link href="/docs/css/font-awesome.min.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 
     
   </head>
-  <body data-url="/docs/launcher/sleep/">
+  <body data-url="/docs/runtime/swarm/">
     
       <div id="headermain"></div>
 <nav id="sidebar" class="showVisitedLinks">
@@ -65,7 +65,7 @@
             <li data-nav-id="/docs/" class="dd-item">
             <a href="/docs/"><i class="fa fa-fw fa-home"></i></a>
             </li>
-    <li data-nav-id="/docs/launcher/" class="dd-item parent alwaysopen">
+    <li data-nav-id="/docs/launcher/" class="dd-item alwaysopen">
       <a href="/docs/launcher/">
         <span>Flokkr launcher</span>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
@@ -96,20 +96,20 @@
           <span>Retry plugin</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
     </li>
-      <li data-nav-id="/docs/launcher/sleep/" class="dd-item active">
+      <li data-nav-id="/docs/launcher/sleep/" class="dd-item">
         <a href="/docs/launcher/sleep/">
           <span>Sleep plugin</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
     </li>
         </ul>
     </li>
-    <li data-nav-id="/docs/runtime/" class="dd-item alwaysopen">
+    <li data-nav-id="/docs/runtime/" class="dd-item parent alwaysopen">
       <a href="/docs/runtime/">
         <span>Runtime environments</span>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </a>
         <ul>
-      <li data-nav-id="/docs/runtime/swarm/" class="dd-item">
+      <li data-nav-id="/docs/runtime/swarm/" class="dd-item active">
         <a href="/docs/runtime/swarm/">
           <span>Docker Swarm</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
@@ -162,7 +162,7 @@
       
       
     <div id="top-github-link">
-      <a class="github-link" href="https://github.com/flokkr/docs/edit/master/exampleSite/content/launcher/sleep.md" target="blank">
+      <a class="github-link" href="https://github.com/flokkr/docs/edit/master/exampleSite/content/runtime/swarm.md" target="blank">
         <i class="fa fa-code-fork"></i>
         Edit page
       </a>
@@ -182,7 +182,7 @@
 
 
 
- <a href='/docs/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/docs/launcher/'>Flokkr launcher</a> > Sleep plugin
+ <a href='/docs/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/docs/runtime/'>Runtime environments</a> > Docker Swarm
 
  
 
@@ -199,13 +199,8 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#sleep-sleep-for-a-specified-amount-of-time">SLEEP: sleep for a specified amount of time.</a></li>
-</ul></li>
-</ul></li>
+<li><a href="#getting-started">Getting started</a></li>
+<li><a href="#attributes">Attributes</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -218,7 +213,7 @@
 
 <div id="body-inner">
   
-    <h1>Sleep plugin</h1>
+    <h1>Docker Swarm</h1>
   
 
 
@@ -228,22 +223,129 @@
     
     
 
-<h4 id="sleep-sleep-for-a-specified-amount-of-time">SLEEP: sleep for a specified amount of time.</h4>
+<p>The <a href="https://github.com/flokkr/runtime-swarm">https://github.com/flokkr/runtime-swarm</a> repository contains example configuration and docker definition to run the flokkr docker images (Hadoop/Spark/Hive/&hellip;) on docker swarm cluster.</p>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>After creating a docker swarm cluster (with <code>docker swarm init</code> and <code>docker swarm join</code>).</p>
+
+<p>Choose a subdirectory and deploy it:</p>
+
+<pre><code>cd ozone
+docker stack deploy -c docker-compose.yaml ozone
+</code></pre>
+
+<p>Check the stacks/services:</p>
+
+<pre><code>docker stack ls
+docker stack ps ozone
+docker service ls
+</code></pre>
+
+<p>Scale:</p>
+
+<pre><code>docker service scale datanode=10
+</code></pre>
+
+<h2 id="attributes">Attributes</h2>
 
 <table>
 <thead>
 <tr>
-<th>Name</th>
-<th>Default</th>
-<th>Description</th>
+<th>Topic</th>
+<th>Solution</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>SLEEP_SECONDS</td>
-<td><notset></td>
-<td>If set, the <code>sleep</code> bash command will be called with the value of the environment variable. Better to not use this plugin, if possible.</td>
+<td><strong>Configuration management</strong> continue</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Source of config files:</td>
+<td>docker-compose file (or external env file)</td>
+</tr>
+
+<tr>
+<td>Configuration preprocessing:</td>
+<td>converted from environment variable with envtoconf</td>
+</tr>
+
+<tr>
+<td>Automatic restart on config change:</td>
+<td>No</td>
+</tr>
+
+<tr>
+<td><strong>Provisioning and scheduling</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Multihost support</td>
+<td>Yes. Via Swarm networking.</td>
+</tr>
+
+<tr>
+<td>Requirements on the hosts</td>
+<td>Docker (with initialized swarm mode)</td>
+</tr>
+
+<tr>
+<td>Definition of the containers per host</td>
+<td>docker-compose deployment section</td>
+</tr>
+
+<tr>
+<td>Scheduling (find hosts with available resource)</td>
+<td>docker-compose based (global/replicated)</td>
+</tr>
+
+<tr>
+<td>Failover on host crash</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>Scale up/down:</td>
+<td><code>docker service scale service_name=n</code></td>
+</tr>
+
+<tr>
+<td>Multi tenancy (multiple cluster)</td>
+<td>Yes (docker swarm networking)</td>
+</tr>
+
+<tr>
+<td><strong>Network</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Network between containers</td>
+<td>Host network</td>
+</tr>
+
+<tr>
+<td>DNS</td>
+<td>Partial, no reverse dns for the replicated containers.</td>
+</tr>
+
+<tr>
+<td>Service discovery</td>
+<td>DNS based</td>
+</tr>
+
+<tr>
+<td>Data locality</td>
+<td>No</td>
+</tr>
+
+<tr>
+<td>Availability of the ports</td>
+<td>Every publised port is avaiblale on ever node</td>
 </tr>
 </tbody>
 </table>
@@ -258,8 +360,8 @@
 </div>
 
 <div id="navigation">
-<a class="nav nav-prev" href="/docs/launcher/retry/" title="Retry plugin"> <i class="fa fa-chevron-left"></i></a>
-    <a class="nav nav-next" href="/docs/runtime/" title="Runtime environments" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/docs/runtime/" title="Runtime environments"> <i class="fa fa-chevron-left"></i></a>
+    <a class="nav nav-next" href="/docs/runtime/compose/" title="Docker compose" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
 
 </section>
 <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">

@@ -3,10 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://flokkr.github.io/docs/runtime/</loc>
-  </url>
-  
-  <url>
     <loc>https://flokkr.github.io/docs/_header/</loc>
     <lastmod>2017-04-24T18:36:24+02:00</lastmod>
   </url>
@@ -22,6 +18,10 @@
   
   <url>
     <loc>https://flokkr.github.io/docs/launcher/consul/</loc>
+  </url>
+  
+  <url>
+    <loc>https://flokkr.github.io/docs/runtime/swarm/</loc>
   </url>
   
   <url>
@@ -46,7 +46,19 @@
   </url>
   
   <url>
+    <loc>https://flokkr.github.io/docs/runtime/kubernetes/</loc>
+  </url>
+  
+  <url>
+    <loc>https://flokkr.github.io/docs/runtime/nomad/</loc>
+  </url>
+  
+  <url>
     <loc>https://flokkr.github.io/docs/launcher/retry/</loc>
+  </url>
+  
+  <url>
+    <loc>https://flokkr.github.io/docs/runtime/</loc>
   </url>
   
   <url>

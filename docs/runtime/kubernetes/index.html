@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.34" />
 
-<title>Sleep plugin :: Flokkr Documentation</title>
+<title>Kubernetes :: Flokkr Documentation</title>
 <link rel="shortcut icon" href="/docs/images/favicon.png" type="image/x-icon" />
 <link href="/docs/css/nucleus.css" rel="stylesheet">
 <link href="/docs/css/font-awesome.min.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 
     
   </head>
-  <body data-url="/docs/launcher/sleep/">
+  <body data-url="/docs/runtime/kubernetes/">
     
       <div id="headermain"></div>
 <nav id="sidebar" class="showVisitedLinks">
@@ -65,7 +65,7 @@
             <li data-nav-id="/docs/" class="dd-item">
             <a href="/docs/"><i class="fa fa-fw fa-home"></i></a>
             </li>
-    <li data-nav-id="/docs/launcher/" class="dd-item parent alwaysopen">
+    <li data-nav-id="/docs/launcher/" class="dd-item alwaysopen">
       <a href="/docs/launcher/">
         <span>Flokkr launcher</span>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
@@ -96,14 +96,14 @@
           <span>Retry plugin</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
     </li>
-      <li data-nav-id="/docs/launcher/sleep/" class="dd-item active">
+      <li data-nav-id="/docs/launcher/sleep/" class="dd-item">
         <a href="/docs/launcher/sleep/">
           <span>Sleep plugin</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
     </li>
         </ul>
     </li>
-    <li data-nav-id="/docs/runtime/" class="dd-item alwaysopen">
+    <li data-nav-id="/docs/runtime/" class="dd-item parent alwaysopen">
       <a href="/docs/runtime/">
         <span>Runtime environments</span>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
@@ -119,7 +119,7 @@
           <span>Docker compose</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
     </li>
-      <li data-nav-id="/docs/runtime/kubernetes/" class="dd-item">
+      <li data-nav-id="/docs/runtime/kubernetes/" class="dd-item active">
         <a href="/docs/runtime/kubernetes/">
           <span>Kubernetes</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
@@ -162,7 +162,7 @@
       
       
     <div id="top-github-link">
-      <a class="github-link" href="https://github.com/flokkr/docs/edit/master/exampleSite/content/launcher/sleep.md" target="blank">
+      <a class="github-link" href="https://github.com/flokkr/docs/edit/master/exampleSite/content/runtime/kubernetes.md" target="blank">
         <i class="fa fa-code-fork"></i>
         Edit page
       </a>
@@ -182,7 +182,7 @@
 
 
 
- <a href='/docs/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/docs/launcher/'>Flokkr launcher</a> > Sleep plugin
+ <a href='/docs/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/docs/runtime/'>Runtime environments</a> > Kubernetes
 
  
 
@@ -199,13 +199,12 @@
 <ul>
 <li>
 <ul>
-<li>
+<li><a href="#getting-started">Getting started</a>
 <ul>
-<li>
-<ul>
-<li><a href="#sleep-sleep-for-a-specified-amount-of-time">SLEEP: sleep for a specified amount of time.</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#hdfs-yarn-cluster">HDFS/YARN cluster</a></li>
 </ul></li>
-</ul></li>
+<li><a href="#attributes">Attributes</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -218,7 +217,7 @@
 
 <div id="body-inner">
   
-    <h1>Sleep plugin</h1>
+    <h1>Kubernetes</h1>
   
 
 
@@ -228,22 +227,124 @@
     
     
 
-<h4 id="sleep-sleep-for-a-specified-amount-of-time">SLEEP: sleep for a specified amount of time.</h4>
+<p>The <a href="https://github.com/flokkr/runtime-kubernetes">https://github.com/flokkr/runtime-kubernetes</a> contains example resource definitions to run flokkr clusters in kubernetes. These are raw resources usually you can use helm charts instead of the raw resource files: <a href="https://github.com/flokkr/charts">https://github.com/flokkr/charts</a></p>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>You need a kubernetes cluster. The easiest way is just using a provider (eg. GCE)</p>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>Upload the predefined configuration with:</p>
+
+<pre><code>kubectl apply -f config.yaml
+</code></pre>
+
+<h3 id="hdfs-yarn-cluster">HDFS/YARN cluster</h3>
+
+<pre><code>kubectl apply -f hdfs.yaml
+
+</code></pre>
+
+<h2 id="attributes">Attributes</h2>
 
 <table>
 <thead>
 <tr>
-<th>Name</th>
-<th>Default</th>
-<th>Description</th>
+<th>Topic</th>
+<th>Solution</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>SLEEP_SECONDS</td>
-<td><notset></td>
-<td>If set, the <code>sleep</code> bash command will be called with the value of the environment variable. Better to not use this plugin, if possible.</td>
+<td><strong>Configuration management</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Source of config files:</td>
+<td>Kubernetes configuration object.</td>
+</tr>
+
+<tr>
+<td>Configuration preprocessing:</td>
+<td>No.</td>
+</tr>
+
+<tr>
+<td>Automatic restart on config change:</td>
+<td>No.</td>
+</tr>
+
+<tr>
+<td><strong>Provisioning and scheduling</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Multihost support</td>
+<td>Yes.</td>
+</tr>
+
+<tr>
+<td>Requirements on the hosts</td>
+<td>Full kubernetes cluster.</td>
+</tr>
+
+<tr>
+<td>Definition of the containers per host</td>
+<td>Kubernetes resource definition.</td>
+</tr>
+
+<tr>
+<td>Scheduling (find hosts with available resource)</td>
+<td>Yes. But because the kubernetes limitations, only Stateful Sets are used.</td>
+</tr>
+
+<tr>
+<td>Failover on host crash</td>
+<td>Yes</td>
+</tr>
+
+<tr>
+<td>Scale up/down:</td>
+<td>Yes, with kubernetes.</td>
+</tr>
+
+<tr>
+<td>Multi tenancy (multiple cluster)</td>
+<td>Yes.</td>
+</tr>
+
+<tr>
+<td><strong>Network</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Network between containers</td>
+<td>Kubernetes network.</td>
+</tr>
+
+<tr>
+<td>DNS</td>
+<td>Yes, kubedns based.</td>
+</tr>
+
+<tr>
+<td>Service discovery</td>
+<td>Based on dns.</td>
+</tr>
+
+<tr>
+<td>Data locality</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>Availability of the ports</td>
+<td>Ingress definition is needed.</td>
 </tr>
 </tbody>
 </table>
@@ -258,8 +359,8 @@
 </div>
 
 <div id="navigation">
-<a class="nav nav-prev" href="/docs/launcher/retry/" title="Retry plugin"> <i class="fa fa-chevron-left"></i></a>
-    <a class="nav nav-next" href="/docs/runtime/" title="Runtime environments" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/docs/runtime/compose/" title="Docker compose"> <i class="fa fa-chevron-left"></i></a>
+    <a class="nav nav-next" href="/docs/runtime/nomad/" title="Nomad" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
 
 </section>
 <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">

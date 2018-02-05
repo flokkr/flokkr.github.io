@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.34" />
 
-<title>Docker compose based hadoop/spark cluster :: Flokkr Documentation</title>
+<title>Docker compose :: Flokkr Documentation</title>
 <link rel="shortcut icon" href="/docs/images/favicon.png" type="image/x-icon" />
 <link href="/docs/css/nucleus.css" rel="stylesheet">
 <link href="/docs/css/font-awesome.min.css" rel="stylesheet">
@@ -65,22 +65,10 @@
             <li data-nav-id="/docs/" class="dd-item">
             <a href="/docs/"><i class="fa fa-fw fa-home"></i></a>
             </li>
-    <li data-nav-id="/docs/runtime/" class="dd-item parent">
-      <a href="/docs/runtime/">
-        <span>Runtime environments</span>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </a>
-        <ul>
-      <li data-nav-id="/docs/runtime/compose/" class="dd-item active">
-        <a href="/docs/runtime/compose/">
-          <span>Docker compose based hadoop/spark cluster</span><i class="fa fa-circle-thin read-icon"></i>
-        </a>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="/docs/launcher/" class="dd-item">
+    <li data-nav-id="/docs/launcher/" class="dd-item alwaysopen">
       <a href="/docs/launcher/">
-        <span>Flokkr launcher</span><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+        <span>Flokkr launcher</span>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </a>
         <ul>
       <li data-nav-id="/docs/launcher/envtoconf/" class="dd-item">
@@ -111,6 +99,34 @@
       <li data-nav-id="/docs/launcher/sleep/" class="dd-item">
         <a href="/docs/launcher/sleep/">
           <span>Sleep plugin</span><i class="fa fa-circle-thin read-icon"></i>
+        </a>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/docs/runtime/" class="dd-item parent alwaysopen">
+      <a href="/docs/runtime/">
+        <span>Runtime environments</span>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </a>
+        <ul>
+      <li data-nav-id="/docs/runtime/swarm/" class="dd-item">
+        <a href="/docs/runtime/swarm/">
+          <span>Docker Swarm</span><i class="fa fa-circle-thin read-icon"></i>
+        </a>
+    </li>
+      <li data-nav-id="/docs/runtime/compose/" class="dd-item active">
+        <a href="/docs/runtime/compose/">
+          <span>Docker compose</span><i class="fa fa-circle-thin read-icon"></i>
+        </a>
+    </li>
+      <li data-nav-id="/docs/runtime/kubernetes/" class="dd-item">
+        <a href="/docs/runtime/kubernetes/">
+          <span>Kubernetes</span><i class="fa fa-circle-thin read-icon"></i>
+        </a>
+    </li>
+      <li data-nav-id="/docs/runtime/nomad/" class="dd-item">
+        <a href="/docs/runtime/nomad/">
+          <span>Nomad</span><i class="fa fa-circle-thin read-icon"></i>
         </a>
     </li>
         </ul>
@@ -166,7 +182,7 @@
 
 
 
- <a href='/docs/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/docs/runtime/'>Runtime environments</a> > Docker compose based hadoop/spark cluster
+ <a href='/docs/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/docs/runtime/'>Runtime environments</a> > Docker compose
 
  
 
@@ -196,7 +212,7 @@
 
 <div id="body-inner">
   
-    <h1>Docker compose based hadoop/spark cluster</h1>
+    <h1>Docker compose</h1>
   
 
 
@@ -206,7 +222,7 @@
     
     
 
-<p>The <a href="runtime-compose">https://github.com/flokkr/runtime-compose</a> repository contains example configuration to run various type of clusters (eg. Hadoop HA, Hadoop federation, Spark, etc.)</p>
+<p>The <a href="runtime-compose">https://github.com/flokkr/runtime-compose</a> repository contains example configuration to run various type of clusters (eg. Hadoop HA, Hadoop federation, Spark, etc.) with docker-compose.</p>
 
 <p>Usually the could be started with</p>
 
@@ -333,8 +349,8 @@
 </div>
 
 <div id="navigation">
-<a class="nav nav-prev" href="/docs/runtime/" title="Runtime environments"> <i class="fa fa-chevron-left"></i></a>
-    <a class="nav nav-next" href="/docs/launcher/" title="Flokkr launcher" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/docs/runtime/swarm/" title="Docker Swarm"> <i class="fa fa-chevron-left"></i></a>
+    <a class="nav nav-next" href="/docs/runtime/kubernetes/" title="Kubernetes" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
 
 </section>
 <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">

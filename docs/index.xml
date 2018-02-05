@@ -43,12 +43,26 @@ The source code of the converter utility can be found in a separated repository.
     </item>
     
     <item>
-      <title>Docker compose based hadoop/spark cluster</title>
+      <title>Docker Swarm</title>
+      <link>https://flokkr.github.io/docs/runtime/swarm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://flokkr.github.io/docs/runtime/swarm/</guid>
+      <description>The https://github.com/flokkr/runtime-swarm repository contains example configuration and docker definition to run the flokkr docker images (Hadoop/Spark/Hive/&amp;hellip;) on docker swarm cluster.
+Getting started After creating a docker swarm cluster (with docker swarm init and docker swarm join).
+Choose a subdirectory and deploy it:
+cd ozone docker stack deploy -c docker-compose.yaml ozone  Check the stacks/services:
+docker stack ls docker stack ps ozone docker service ls  Scale:
+docker service scale datanode=10  Attributes    Topic Solution     Configuration management continue    Source of config files: docker-compose file (or external env file)   Configuration preprocessing: converted from environment variable with envtoconf   Automatic restart on config change: No   Provisioning and scheduling    Multihost support Yes.</description>
+    </item>
+    
+    <item>
+      <title>Docker compose</title>
       <link>https://flokkr.github.io/docs/runtime/compose/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://flokkr.github.io/docs/runtime/compose/</guid>
-      <description> The https://github.com/flokkr/runtime-compose repository contains example configuration to run various type of clusters (eg. Hadoop HA, Hadoop federation, Spark, etc.)
+      <description> The https://github.com/flokkr/runtime-compose repository contains example configuration to run various type of clusters (eg. Hadoop HA, Hadoop federation, Spark, etc.) with docker-compose.
 Usually the could be started with
 docker-compose up -d  To scale services you can run
 docker-compose scale datanode=1  But please note that not all the containers can be scaled up. The master components (such as Hadoop namenode) usually have hardcoded hostnames which avoid the scaling,
@@ -75,6 +89,30 @@ The original products usually unpacked to the /opt directory during the containe
       <description>Kerberos plugin downloads/generates kerberos keytabs and ssl key/truststore
 Our total UNSECURE kerberos server contains a REST endpoint to download on-the-fly generated kerberos keytabs, java keystores (ssl keystores, trustores). This plugin could be configured to download the files. The plugin also copies krb5.cfg to /etc.
 Configuration    Name Default Description     KERBEROS_SERVER krb5 The name of the UNSECURE kerberos server where the REST endpoint is available on :8081   KERBEROS_KEYTABS  Space separated list of keytab names.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>https://flokkr.github.io/docs/runtime/kubernetes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://flokkr.github.io/docs/runtime/kubernetes/</guid>
+      <description>The https://github.com/flokkr/runtime-kubernetes contains example resource definitions to run flokkr clusters in kubernetes. These are raw resources usually you can use helm charts instead of the raw resource files: https://github.com/flokkr/charts
+Getting started You need a kubernetes cluster. The easiest way is just using a provider (eg. GCE)
+Configuration Upload the predefined configuration with:
+kubectl apply -f config.yaml  HDFS/YARN cluster kubectl apply -f hdfs.yaml  Attributes    Topic Solution     Configuration management    Source of config files: Kubernetes configuration object.</description>
+    </item>
+    
+    <item>
+      <title>Nomad</title>
+      <link>https://flokkr.github.io/docs/runtime/nomad/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://flokkr.github.io/docs/runtime/nomad/</guid>
+      <description>The https://github.com/flokkr/runtime-nomad contains an example to use custom dockerized clusters based on the flokkr docker images.
+This is a custom solution where the configuration management is solved with consul and custom upload/download scripts. But it highly flexible, for example all the components could restart automatically in case of any configuration change.
+Getting started You need a cluster. use terraform or any other tool to start it.
+Prerequisits  Install docker to the nodes Install consul to every node Install nomad to the nodes Install sigil (http://github.</description>
     </item>
     
     <item>
