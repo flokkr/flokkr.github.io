@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://flokkr.github.io/post/katacoda/</loc>
+    <lastmod>2018-04-10T22:14:43+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://flokkr.github.io/post/mrrobot/</loc>
     <lastmod>2018-03-17T23:12:43+01:00</lastmod>
   </url>
@@ -25,25 +30,31 @@
   
   <url>
     <loc>https://flokkr.github.io/tags/docker/</loc>
-    <lastmod>2018-03-17T23:12:43+01:00</lastmod>
+    <lastmod>2018-04-10T22:14:43+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://flokkr.github.io/</loc>
-    <lastmod>2018-03-17T23:12:43+01:00</lastmod>
+    <lastmod>2018-04-10T22:14:43+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://flokkr.github.io/tags/hadoop/</loc>
-    <lastmod>2018-03-17T23:12:43+01:00</lastmod>
+    <lastmod>2018-04-10T22:14:43+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://flokkr.github.io/tags/ozone/</loc>
+    <lastmod>2018-04-10T22:14:43+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://flokkr.github.io/post/</loc>
-    <lastmod>2018-03-17T23:12:43+01:00</lastmod>
+    <lastmod>2018-04-10T22:14:43+02:00</lastmod>
     <priority>0</priority>
   </url>
   
