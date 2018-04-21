@@ -92,9 +92,9 @@
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">version: <span style="color:#e6db74">&#34;3&#34;</span>
 services:
-   namenode<span style="color:#ae81ff">1</span>:
+   namenode1:
       image: flokkr/hadoop:latest
-      hostname: namenode<span style="color:#ae81ff">1</span>
+      hostname: namenode1
       ports:
          - <span style="color:#ae81ff">9870</span>:<span style="color:#ae81ff">9870</span>
       env_file:
@@ -103,9 +103,9 @@ services:
           ENSURE_NAMENODE_DIR: <span style="color:#e6db74">&#34;/tmp/hadoop-hadoop/dfs/name&#34;</span>
           SLEEP_SECONDS: <span style="color:#ae81ff">20</span>
       command: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;namenode&#34;</span>]
-   namenode<span style="color:#ae81ff">2</span>:
+   namenode2:
       image: flokkr/hadoop:latest
-      hostname: namenode<span style="color:#ae81ff">2</span>
+      hostname: namenode2
       ports:
          - <span style="color:#ae81ff">9871</span>:<span style="color:#ae81ff">9870</span>
       env_file:
@@ -114,21 +114,21 @@ services:
           ENSURE_STANDBY_NAMENODE_DIR: <span style="color:#e6db74">&#34;/tmp/hadoop-hadoop/dfs/name&#34;</span>
           SLEEP_SECONDS: <span style="color:#ae81ff">40</span>
       command: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;namenode&#34;</span>]
-   journal<span style="color:#ae81ff">1</span>:
+   journal1:
       image: flokkr/hadoop:latest
-      hostname: journal<span style="color:#ae81ff">1</span>
+      hostname: journal1
       env_file:
         - ./config
       command: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;journalnode&#34;</span>]
-   journal<span style="color:#ae81ff">2</span>:
+   journal2:
       image: flokkr/hadoop:latest
-      hostname: journal<span style="color:#ae81ff">2</span>
+      hostname: journal2
       env_file:
         - ./config
       command: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;journalnode&#34;</span>]
-   journal<span style="color:#ae81ff">3</span>:
+   journal3:
       image: flokkr/hadoop:latest
-      hostname: journal<span style="color:#ae81ff">3</span>
+      hostname: journal3
       env_file:
         - ./config
       command: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;journalnode&#34;</span>]
