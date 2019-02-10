@@ -3,91 +3,94 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://flokkr.github.io/presentations/</loc>
+    <loc>http://www.example.com/presentations/</loc>
     <lastmod>2018-06-18T12:43:54+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/post/byteman/</loc>
+    <loc>http://www.example.com/post/byteman/</loc>
     <lastmod>2018-06-18T12:25:02+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/post/katacoda/</loc>
+    <loc>http://www.example.com/post/katacoda/</loc>
     <lastmod>2018-04-10T22:14:43+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/post/mrrobot/</loc>
+    <loc>http://www.example.com/post/mrrobot/</loc>
     <lastmod>2018-03-17T23:12:43+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/post/hadoop-hdfs-ha-docker-compose/</loc>
+    <loc>http://www.example.com/post/hadoop-hdfs-ha-docker-compose/</loc>
     <lastmod>2018-01-19T23:12:43+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/categories/</loc>
+    <loc>http://www.example.com/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/tags/compose/</loc>
-    <lastmod>2018-01-19T23:12:43+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://flokkr.github.io/tags/docker/</loc>
-    <lastmod>2018-04-10T22:14:43+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://flokkr.github.io/</loc>
+    <loc>http://www.example.com/</loc>
     <lastmod>2018-06-18T12:43:54+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/tags/hadoop/</loc>
-    <lastmod>2018-04-10T22:14:43+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://flokkr.github.io/tags/ozone/</loc>
-    <lastmod>2018-04-10T22:14:43+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://flokkr.github.io/page/</loc>
+    <loc>http://www.example.com/page/</loc>
     <lastmod>2018-06-18T12:43:54+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/post/</loc>
+    <loc>http://www.example.com/post/</loc>
     <lastmod>2018-06-18T12:25:02+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/tags/robot/</loc>
-    <lastmod>2018-03-17T23:12:43+01:00</lastmod>
+    <loc>http://www.example.com/tags/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/tags/</loc>
+    <loc>http://www.example.com/post/cleanup/</loc>
+  </url>
+  
+  <url>
+    <loc>http://www.example.com/tags/compose/</loc>
     <lastmod>2018-01-19T23:12:43+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/tags/testing/</loc>
+    <loc>http://www.example.com/tags/docker/</loc>
+    <lastmod>2018-04-10T22:14:43+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.example.com/tags/hadoop/</loc>
+    <lastmod>2018-04-10T22:14:43+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.example.com/tags/ozone/</loc>
+    <lastmod>2018-04-10T22:14:43+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.example.com/tags/robot/</loc>
+    <lastmod>2018-03-17T23:12:43+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.example.com/tags/testing/</loc>
     <lastmod>2018-03-17T23:12:43+01:00</lastmod>
     <priority>0</priority>
   </url>

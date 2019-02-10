@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Flokkr.">
 		<link rel="icon" href="http://www.example.com/favicon.ico">
-		<title>Pages - Flokkr.</title>
+		<title>The big cleanup - Flokkr.</title>
 		
 		<link rel="stylesheet" href="http://www.example.com/css/highlight/default.css">
 		<link rel="stylesheet" href="http://www.example.com/css/bootstrap.min.css">
@@ -54,26 +54,56 @@
 <div class="row">
 	<div class="col-sm-8 doc-main">
 		<main role="main">
-			<div class="doc-list-header">
-				<h3>Pages in Pages</h3>
-			</div>
-			<div class="doc-list-entry">
-			<ul>
-	
-				<li><a class="doc-entry" href="/presentations/">
-					<span class="doc-entry-title">Presentations</span>
-					<span class="doc-entry-meta in-list">
-						(<time datetime="2018-06-18">June 18, 2018</time>)
-					</span>
-				</a></li>
-	
-			</ul>
-			</div>
+			<article>
+				<a id="title"></a>
+				<h1 class="doc-entry-title">The big cleanup</h1>
+				<div class="doc-entry-meta">
+					<span><time datetime="0001-01-01">January 01, 0001</time></span>
+				</div>
+				<section>
+					<p>Flokkr project was an experimental area from the beginning. After a while I realized that my containerization work requires too many repositories and I moved them to this organization. The repositories contained <em>mutiple</em> experiments to containerize Hadoop/Spark and other bigdata projects.</p>
+
+<p>I run them with:</p>
+
+<ul>
+<li>Kubernetes (using plain kubernetes resource files)</li>
+<li>Kubernetes (using Helm charts)</li>
+<li>docker-compose (local pseudo clusters)</li>
+<li>Docker swarm</li>
+<li>Nomad + Consul</li>
+</ul>
+
+<p>Most of them are no longer maintained. As of now I use:</p>
+
+<ul>
+<li>Kubernetes</li>
+<li>docker-compose (some of the stable parts are already adopted by the Apache Hadoop Ozone project)</li>
+</ul>
+
+<p>Therefore I decided to do a huge cleanup in <a href="https://github.com/flokkr" target="_blank">https://github.com/flokkr</a>. I moved all the unused repositories back t <a href="https://github.com/elek" target="_blank">https://github.com/elek</a> and archived them (no repository is deleted). The flokkr project itself now focuses to run Apache Hadoop / Spark / &hellip; in kubernetes, all the experimental bits are moved to my personal github account (Including some kubernetes based experimental project such as a <a href="https://github.com/elek/control-tower" target="_blank">ui</a> + <a href="https://github.com/elek/fokkr-operator" target="_blank">operator</a> approach)</p>
+
+<p>The other big change is that I decided to drop Helm chart support. I will describe it in more details, but my opinion is that Helm is very good for quick prorotyping but not for managing production ready clusters. There is no <em>&lsquo;One Size Fit All&rsquo;</em> and Helm is very bad at supporting multiple different use cases (different type of configs, different type of product sets)</p>
+
+<p>In this project I switched to use a composition based kubernetes resource manager: <a href="https:github.com/elek/flekszible" target="_blank">flekszible</a>. With the help of this tool I can maintain the <a href="https://github.com/flokkr/k8s/tree/master/examples" target="_blank">essential configuration</a> flavours of the base projects (such as hdfs, hdfs-secure, hdfs-ha, spark) and combine/generate the final kubernetes resources files which can be versioned and handled in a simple ways.</p>
+
+				</section>
+			</article>
 		</main>
 	</div> 
 
 	
+
 <div class="col-sm-3 col-sm-offset-1 doc-sidebar">
+	<div id="sidebar">
+	<div class="sidebar-module">
+		<div class="sidebar-toc">
+			<h4 class="sidebar-heading">Table of Contents</h4>
+			<ul>
+				<li><strong><a href="#title">The big cleanup</a></strong></li>
+			</ul>
+			
+		</div>
+	</div>
 	<div class="sidebar-module">
 		<h4 class="sidebar-heading">Pages in Categories</h4>
 		<ul class="sidebar-category-list">
@@ -97,6 +127,7 @@
 			<a class="tag-item" href="http://www.example.com/tags/testing">testing</a>
 		
 		</div>
+	</div>
 	</div>
 </div>
 
