@@ -2,64 +2,64 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Flokkr.</title>
-    <link>http://www.example.com/tags/</link>
+    <link>https://flokkr.github.io/tags/</link>
     <description>Recent content in Tags on Flokkr.</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="http://www.example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://flokkr.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>compose</title>
-      <link>http://www.example.com/tags/compose/</link>
+      <link>https://flokkr.github.io/tags/compose/</link>
       <pubDate>Fri, 19 Jan 2018 23:12:43 +0100</pubDate>
       
-      <guid>http://www.example.com/tags/compose/</guid>
+      <guid>https://flokkr.github.io/tags/compose/</guid>
       <description></description>
     </item>
     
     <item>
       <title>docker</title>
-      <link>http://www.example.com/tags/docker/</link>
+      <link>https://flokkr.github.io/tags/docker/</link>
       <pubDate>Tue, 10 Apr 2018 22:14:43 +0200</pubDate>
       
-      <guid>http://www.example.com/tags/docker/</guid>
+      <guid>https://flokkr.github.io/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hadoop</title>
-      <link>http://www.example.com/tags/hadoop/</link>
+      <link>https://flokkr.github.io/tags/hadoop/</link>
       <pubDate>Tue, 10 Apr 2018 22:14:43 +0200</pubDate>
       
-      <guid>http://www.example.com/tags/hadoop/</guid>
+      <guid>https://flokkr.github.io/tags/hadoop/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ozone</title>
-      <link>http://www.example.com/tags/ozone/</link>
+      <link>https://flokkr.github.io/tags/ozone/</link>
       <pubDate>Tue, 10 Apr 2018 22:14:43 +0200</pubDate>
       
-      <guid>http://www.example.com/tags/ozone/</guid>
+      <guid>https://flokkr.github.io/tags/ozone/</guid>
       <description></description>
     </item>
     
     <item>
       <title>robot</title>
-      <link>http://www.example.com/tags/robot/</link>
+      <link>https://flokkr.github.io/tags/robot/</link>
       <pubDate>Sat, 17 Mar 2018 23:12:43 +0100</pubDate>
       
-      <guid>http://www.example.com/tags/robot/</guid>
+      <guid>https://flokkr.github.io/tags/robot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>testing</title>
-      <link>http://www.example.com/tags/testing/</link>
+      <link>https://flokkr.github.io/tags/testing/</link>
       <pubDate>Sat, 17 Mar 2018 23:12:43 +0100</pubDate>
       
-      <guid>http://www.example.com/tags/testing/</guid>
+      <guid>https://flokkr.github.io/tags/testing/</guid>
       <description></description>
     </item>
     

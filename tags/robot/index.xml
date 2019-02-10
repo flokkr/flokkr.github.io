@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>robot on Flokkr.</title>
-    <link>http://www.example.com/tags/robot/</link>
+    <link>https://flokkr.github.io/tags/robot/</link>
     <description>Recent content in robot on Flokkr.</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 17 Mar 2018 23:12:43 +0100</lastBuildDate>
     
-	<atom:link href="http://www.example.com/tags/robot/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://flokkr.github.io/tags/robot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Integration tests with robot framework</title>
-      <link>http://www.example.com/post/mrrobot/</link>
+      <link>https://flokkr.github.io/post/mrrobot/</link>
       <pubDate>Sat, 17 Mar 2018 23:12:43 +0100</pubDate>
       
-      <guid>http://www.example.com/post/mrrobot/</guid>
+      <guid>https://flokkr.github.io/post/mrrobot/</guid>
       <description>Robot framework is a generic integration test framework. As an experiment I added robot based integrations tests to the runtime-compose.
 This repository contains example docker-compose files to start various type of hadoop/spark/&amp;hellip; clusters. Now it also contains some robot scripts to check if the docker-compose files are still vaild with the latest images. See this tile as an example.
 *** Settings *** Documentation Smoketest with hdsl/ozone. Library OperatingSystem Suite Setup Startup Cluster Suite Teardown Docker compose down Resource .</description>
