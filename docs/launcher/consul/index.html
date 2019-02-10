@@ -5,19 +5,18 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="generator" content="Hugo 0.34" />
-
+<meta name="revised" content="2019-02-10T10:18:45 CET">
 <title>Consul config loading :: Flokkr Documentation</title>
-<link rel="shortcut icon" href="/docs/images/favicon.png" type="image/x-icon" />
-<link href="/docs/css/nucleus.css" rel="stylesheet">
-<link href="/docs/css/font-awesome.min.css" rel="stylesheet">
-<link href="/docs/css/hybrid.css" rel="stylesheet">
-<link href="/docs/css/featherlight.min.css" rel="stylesheet">
-<link href="/docs/css/auto-complete.css" rel="stylesheet">
-<link href="/docs/theme-original/style.css" rel="stylesheet">
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/hybrid.css" rel="stylesheet">
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<link href="/css/auto-complete.css" rel="stylesheet">
+<link href="/theme-original/style.css" rel="stylesheet">
 
-<link rel="stylesheet" href="/docs/css/bootstrap.min.css">
-<script src="/docs/js/jquery-2.x.min.js"></script>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
 <style type="text/css">
   :root #header + #content > #left > #rlblock_left {
     display:none !important;
@@ -28,7 +27,7 @@
 
     
   </head>
-  <body data-url="/docs/launcher/consul/">
+  <body data-url="/launcher/consul/">
     
       <div id="headermain"></div>
 <nav id="sidebar" class="showVisitedLinks">
@@ -45,91 +44,83 @@
 
   
 
+
     </div>
         <div class="searchbox">
 		    <label for="search-by"><i class="fa fa-search"></i></label>
 		    <input data-search-input id="search-by" type="text" placeholder="Search...">
 		    <span data-search-clear=""><i class="fa fa-close"></i></span>
 		</div>
-		<script type="text/javascript" src="/docs/js/lunr.min.js"></script>
-		<script type="text/javascript" src="/docs/js/auto-complete.js"></script>
+		<script type="text/javascript" src="/js/lunr.min.js"></script>
+		<script type="text/javascript" src="/js/auto-complete.js"></script>
 		<script type="text/javascript">
         
-            var baseurl = "https:\/\/flokkr.github.io\/docs\/";
+            var baseurl = "\/";
         
 		</script>
-		<script type="text/javascript" src="/docs/js/search.js"></script>
+		<script type="text/javascript" src="/js/search.js"></script>
   </div>
 
       <ul class="topics">
-            <li data-nav-id="/docs/" class="dd-item">
-            <a href="/docs/"><i class="fa fa-fw fa-home"></i></a>
+            <li data-nav-id="/" class="dd-item">
+            <a href="/"><i class="fa fa-fw fa-home"></i></a>
             </li>
-    <li data-nav-id="/docs/launcher/" class="dd-item parent alwaysopen">
-      <a href="/docs/launcher/">
-        <span>Flokkr launcher</span>
+    <li data-nav-id="/launcher/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/launcher/">Flokkr launcher</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </a>
+      </div>
         <ul>
-      <li data-nav-id="/docs/launcher/envtoconf/" class="dd-item">
-        <a href="/docs/launcher/envtoconf/">
-          <span>Configuration transformer plugin</span><i class="fa fa-circle-thin read-icon"></i>
-        </a>
+      <li data-nav-id="/launcher/envtoconf/" class="dd-item">
+        <div>
+          <a href="/launcher/envtoconf/">
+            Configuration transformer plugin
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
     </li>
-      <li data-nav-id="/docs/launcher/consul/" class="dd-item active">
-        <a href="/docs/launcher/consul/">
-          <span>Consul config loading</span><i class="fa fa-circle-thin read-icon"></i>
-        </a>
+      <li data-nav-id="/launcher/consul/" class="dd-item active">
+        <div>
+          <a href="/launcher/consul/">
+            Consul config loading
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
     </li>
-      <li data-nav-id="/docs/launcher/installer/" class="dd-item">
-        <a href="/docs/launcher/installer/">
-          <span>Installer plugin</span><i class="fa fa-circle-thin read-icon"></i>
-        </a>
+      <li data-nav-id="/launcher/installer/" class="dd-item">
+        <div>
+          <a href="/launcher/installer/">
+            Installer plugin
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
     </li>
-      <li data-nav-id="/docs/launcher/kerberos/" class="dd-item">
-        <a href="/docs/launcher/kerberos/">
-          <span>Kerberos plugin</span><i class="fa fa-circle-thin read-icon"></i>
-        </a>
+      <li data-nav-id="/launcher/kerberos/" class="dd-item">
+        <div>
+          <a href="/launcher/kerberos/">
+            Kerberos plugin
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
     </li>
-      <li data-nav-id="/docs/launcher/retry/" class="dd-item">
-        <a href="/docs/launcher/retry/">
-          <span>Retry plugin</span><i class="fa fa-circle-thin read-icon"></i>
-        </a>
+      <li data-nav-id="/launcher/retry/" class="dd-item">
+        <div>
+          <a href="/launcher/retry/">
+            Retry plugin
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
     </li>
-      <li data-nav-id="/docs/launcher/sleep/" class="dd-item">
-        <a href="/docs/launcher/sleep/">
-          <span>Sleep plugin</span><i class="fa fa-circle-thin read-icon"></i>
-        </a>
+      <li data-nav-id="/launcher/sleep/" class="dd-item">
+        <div>
+          <a href="/launcher/sleep/">
+            Sleep plugin
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
     </li>
         </ul>
     </li>
-    <li data-nav-id="/docs/runtime/" class="dd-item alwaysopen">
-      <a href="/docs/runtime/">
-        <span>Runtime environments</span>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </a>
-        <ul>
-      <li data-nav-id="/docs/runtime/swarm/" class="dd-item">
-        <a href="/docs/runtime/swarm/">
-          <span>Docker Swarm</span><i class="fa fa-circle-thin read-icon"></i>
-        </a>
-    </li>
-      <li data-nav-id="/docs/runtime/compose/" class="dd-item">
-        <a href="/docs/runtime/compose/">
-          <span>Docker compose</span><i class="fa fa-circle-thin read-icon"></i>
-        </a>
-    </li>
-      <li data-nav-id="/docs/runtime/kubernetes/" class="dd-item">
-        <a href="/docs/runtime/kubernetes/">
-          <span>Kubernetes</span><i class="fa fa-circle-thin read-icon"></i>
-        </a>
-    </li>
-      <li data-nav-id="/docs/runtime/nomad/" class="dd-item">
-        <a href="/docs/runtime/nomad/">
-          <span>Nomad</span><i class="fa fa-circle-thin read-icon"></i>
-        </a>
-    </li>
-        </ul>
+    <li data-nav-id="/kubernetes/" class="dd-item
+        ">
+      <div>
+      <a href="/kubernetes/">Kubernetes</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
     </li>
 
 
@@ -164,7 +155,7 @@
     <div id="top-github-link">
       <a class="github-link" href="https://github.com/flokkr/docs/edit/master/exampleSite/content/launcher/consul.md" target="blank">
         <i class="fa fa-code-fork"></i>
-        Edit page
+        Improve this page
       </a>
     </div><div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
         <span id="sidebar-toggle-span">
@@ -182,7 +173,7 @@
 
 
 
- <a href='/docs/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/docs/launcher/'>Flokkr launcher</a> > Consul config loading
+ <a href='/'>Docker images for Open Source bigdata/hadoop projects</a> > <a href='/launcher/'>Flokkr launcher</a> > Consul config loading
 
  
 
@@ -327,21 +318,21 @@
 </div>
 
 <div id="navigation">
-<a class="nav nav-prev" href="/docs/launcher/envtoconf/" title="Configuration transformer plugin"> <i class="fa fa-chevron-left"></i></a>
-    <a class="nav nav-next" href="/docs/launcher/installer/" title="Installer plugin" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/launcher/envtoconf/" title="Configuration transformer plugin"> <i class="fa fa-chevron-left"></i><label>Configuration transformer plugin</label></a>
+    <a class="nav nav-next" href="/launcher/installer/" title="Installer plugin" style="margin-right: 0px;"><label>Installer plugin</label><i class="fa fa-chevron-right"></i></a></div>
 
 </section>
 <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
   <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
 </div>    
 
-<script src="/docs/js/clipboard.min.js"></script>
-<script src="/docs/js/featherlight.min.js"></script>
-<script src="/docs/js/html5shiv-printshiv.min.js"></script>
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/featherlight.min.js"></script>
+<script src="/js/html5shiv-printshiv.min.js"></script>
 
-<script src="/docs/js/modernizr.custom.71422.js"></script>
-<script src="/docs/js/docdock.js"></script>
-<script src="/docs/theme-original/script.js"></script>
+<script src="/js/modernizr.custom.71422.js"></script>
+<script src="/js/docdock.js"></script>
+<script src="/theme-original/script.js"></script>
 
 
     

@@ -3,70 +3,54 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://flokkr.github.io/docs/_header/</loc>
+    <loc>/_header/</loc>
     <lastmod>2017-04-24T18:36:24+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/docs/categories/</loc>
+    <loc>/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/docs/launcher/envtoconf/</loc>
+    <loc>/launcher/envtoconf/</loc>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/docs/launcher/consul/</loc>
+    <loc>/launcher/consul/</loc>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/docs/runtime/swarm/</loc>
-  </url>
-  
-  <url>
-    <loc>https://flokkr.github.io/docs/runtime/compose/</loc>
-  </url>
-  
-  <url>
-    <loc>https://flokkr.github.io/docs/</loc>
+    <loc>/</loc>
     <lastmod>2017-04-24T18:36:24+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/docs/launcher/</loc>
+    <loc>/launcher/</loc>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/docs/launcher/installer/</loc>
+    <loc>/launcher/installer/</loc>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/docs/launcher/kerberos/</loc>
+    <loc>/launcher/kerberos/</loc>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/docs/runtime/kubernetes/</loc>
+    <loc>/kubernetes/</loc>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/docs/runtime/nomad/</loc>
+    <loc>/launcher/retry/</loc>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/docs/launcher/retry/</loc>
+    <loc>/launcher/sleep/</loc>
   </url>
   
   <url>
-    <loc>https://flokkr.github.io/docs/runtime/</loc>
-  </url>
-  
-  <url>
-    <loc>https://flokkr.github.io/docs/launcher/sleep/</loc>
-  </url>
-  
-  <url>
-    <loc>https://flokkr.github.io/docs/tags/</loc>
+    <loc>/tags/</loc>
     <priority>0</priority>
   </url>
   

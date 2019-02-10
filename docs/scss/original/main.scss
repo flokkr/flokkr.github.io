@@ -525,6 +525,10 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
 
 // responsive
 
+#navigation label{
+    display: none;
+}
+
 #body .nav:hover {
     background: $main_shadow_color;
 }
@@ -1136,7 +1140,7 @@ td {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: calc(100% - 150px);
+    // width: calc(100% - 150px);
 }
 
 #body #breadcrumbs .links {

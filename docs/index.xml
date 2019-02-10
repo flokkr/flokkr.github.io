@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker images for Open Source bigdata/hadoop projects on Flokkr Documentation</title>
-    <link>https://flokkr.github.io/docs/</link>
+    <link>/</link>
     <description>Recent content in Docker images for Open Source bigdata/hadoop projects on Flokkr Documentation</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 24 Apr 2017 18:36:24 +0200</lastBuildDate>
     
-	<atom:link href="https://flokkr.github.io/docs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>header</title>
-      <link>https://flokkr.github.io/docs/_header/</link>
+      <link>/_header/</link>
       <pubDate>Mon, 24 Apr 2017 18:36:24 +0200</pubDate>
       
-      <guid>https://flokkr.github.io/docs/_header/</guid>
+      <guid>/_header/</guid>
       <description>Flokkr documentation</description>
     </item>
     
     <item>
       <title>Configuration transformer plugin</title>
-      <link>https://flokkr.github.io/docs/launcher/envtoconf/</link>
+      <link>/launcher/envtoconf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://flokkr.github.io/docs/launcher/envtoconf/</guid>
+      <guid>/launcher/envtoconf/</guid>
       <description>Could be activated by CONFIG_TYPE=simple settings, but it&amp;rsquo;s the default.
 Every configuration could be defined with environment variables, and they will be converted finally to hadoop xml, properties, conf or other format. The destination format (and the destination file name) is defined with the name of the environment variable according to a naming convention.
 The generated files will be saved to the $CONF_DIR directory.
@@ -34,47 +34,20 @@ The source code of the converter utility can be found in a separated repository.
     
     <item>
       <title>Consul config loading</title>
-      <link>https://flokkr.github.io/docs/launcher/consul/</link>
+      <link>/launcher/consul/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://flokkr.github.io/docs/launcher/consul/</guid>
+      <guid>/launcher/consul/</guid>
       <description>Could be activated with CONFIG_TYPE=consul
  The starter script list the configuration file names based on a consul key prefix. All the files will be downloaded from the consul key value store and the application process will be started with consul-template (enable an automatic restart in case of configuration file change)  The source code of the consul based configuration loading and launcher is available at the elek/consul-launcher repository.</description>
     </item>
     
     <item>
-      <title>Docker Swarm</title>
-      <link>https://flokkr.github.io/docs/runtime/swarm/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://flokkr.github.io/docs/runtime/swarm/</guid>
-      <description>The https://github.com/flokkr/runtime-swarm repository contains example configuration and docker definition to run the flokkr docker images (Hadoop/Spark/Hive/&amp;hellip;) on docker swarm cluster.
-Getting started After creating a docker swarm cluster (with docker swarm init and docker swarm join).
-Choose a subdirectory and deploy it:
-cd ozone docker stack deploy -c docker-compose.yaml ozone  Check the stacks/services:
-docker stack ls docker stack ps ozone docker service ls  Scale:
-docker service scale datanode=10  Attributes    Topic Solution     Configuration management continue    Source of config files: docker-compose file (or external env file)   Configuration preprocessing: converted from environment variable with envtoconf   Automatic restart on config change: No   Provisioning and scheduling    Multihost support Yes.</description>
-    </item>
-    
-    <item>
-      <title>Docker compose</title>
-      <link>https://flokkr.github.io/docs/runtime/compose/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://flokkr.github.io/docs/runtime/compose/</guid>
-      <description> The https://github.com/flokkr/runtime-compose repository contains example configuration to run various type of clusters (eg. Hadoop HA, Hadoop federation, Spark, etc.) with docker-compose.
-Usually the could be started with
-docker-compose up -d  To scale services you can run
-docker-compose scale datanode=1  But please note that not all the containers can be scaled up. The master components (such as Hadoop namenode) usually have hardcoded hostnames which avoid the scaling,
-Common properties    Topic Solution     Configuration management    Source of config files: docker-compose external environment variable file   Configuration preprocessing: envtoconf (Convert environment variables to configuration formats   Automatic restart on config change: Not supported, docker-compose up is required   Provisioning and scheduling    Multihost support NO   Requirements on the hosts docker daemon and docker-compose   Definition of the containers per host N/A, one docker-compose file for the local host   Scheduling (find hosts with available resource) NO, localhost only   Failover on host crash NO   Scale up/down: Easy with docker-compose scale datanode=3   Multi tenancy (multiple cluster) Partial (from multiple checkout directory, after port adjustment)   Network    Network between containers dedicated network per docker-compose file   DNS YES, handled by the docker network   Service discovery NO (DNS based)   Data locality NO   Availability of the ports Published according to the docker-compose files    </description>
-    </item>
-    
-    <item>
       <title>Installer plugin</title>
-      <link>https://flokkr.github.io/docs/launcher/installer/</link>
+      <link>/launcher/installer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://flokkr.github.io/docs/launcher/installer/</guid>
+      <guid>/launcher/installer/</guid>
       <description>Installer plugin could replace built in components
 The original products usually unpacked to the /opt directory during the container build (eg. /opt/hadoop, /opt/spark, etc&amp;hellip;). The install plugin deletes the original product directory and replaces it with a newly one downloaded from the internet.
    Name Default Description     INSTALLER_XXX  The value of the environment variable should be an url. If set, the URL will be downloaded and untar-ed to the /opt/xxx directory.</description>
@@ -82,55 +55,31 @@ The original products usually unpacked to the /opt directory during the containe
     
     <item>
       <title>Kerberos plugin</title>
-      <link>https://flokkr.github.io/docs/launcher/kerberos/</link>
+      <link>/launcher/kerberos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://flokkr.github.io/docs/launcher/kerberos/</guid>
+      <guid>/launcher/kerberos/</guid>
       <description>Kerberos plugin downloads/generates kerberos keytabs and ssl key/truststore
 Our total UNSECURE kerberos server contains a REST endpoint to download on-the-fly generated kerberos keytabs, java keystores (ssl keystores, trustores). This plugin could be configured to download the files. The plugin also copies krb5.cfg to /etc.
 Configuration    Name Default Description     KERBEROS_SERVER krb5 The name of the UNSECURE kerberos server where the REST endpoint is available on :8081   KERBEROS_KEYTABS  Space separated list of keytab names.</description>
     </item>
     
     <item>
-      <title>Kubernetes</title>
-      <link>https://flokkr.github.io/docs/runtime/kubernetes/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://flokkr.github.io/docs/runtime/kubernetes/</guid>
-      <description>The https://github.com/flokkr/runtime-kubernetes contains example resource definitions to run flokkr clusters in kubernetes. These are raw resources usually you can use helm charts instead of the raw resource files: https://github.com/flokkr/charts
-Getting started You need a kubernetes cluster. The easiest way is just using a provider (eg. GCE)
-Configuration Upload the predefined configuration with:
-kubectl apply -f config.yaml  HDFS/YARN cluster kubectl apply -f hdfs.yaml  Attributes    Topic Solution     Configuration management    Source of config files: Kubernetes configuration object.</description>
-    </item>
-    
-    <item>
-      <title>Nomad</title>
-      <link>https://flokkr.github.io/docs/runtime/nomad/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://flokkr.github.io/docs/runtime/nomad/</guid>
-      <description>The https://github.com/flokkr/runtime-nomad contains an example to use custom dockerized clusters based on the flokkr docker images.
-This is a custom solution where the configuration management is solved with consul and custom upload/download scripts. But it highly flexible, for example all the components could restart automatically in case of any configuration change.
-Getting started You need a cluster. use terraform or any other tool to start it.
-Prerequisits  Install docker to the nodes Install consul to every node Install nomad to the nodes Install sigil (http://github.</description>
-    </item>
-    
-    <item>
       <title>Retry plugin</title>
-      <link>https://flokkr.github.io/docs/launcher/retry/</link>
+      <link>/launcher/retry/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://flokkr.github.io/docs/launcher/retry/</guid>
+      <guid>/launcher/retry/</guid>
       <description>The plugin tries to run the entrypoint of the image multiple times. If the process has been exited with non zero exit code, it tries to rerun the command after a sleep. The sleep time increasing with every iteration and the whole process will be stopped anyway after a fix amount of retry. If the process run enough time (60s) the failure counter and sleep time is reseted.
 Configuration    Name Default Description     RETRY_NUMBER 10 Number of times the process will be restarted (in case of non-zero exit code   RETRY_NORMAL_RUN_DURATION 60 After this amount of seconds the RETRY_NUMBER counter will be reseted.</description>
     </item>
     
     <item>
       <title>Sleep plugin</title>
-      <link>https://flokkr.github.io/docs/launcher/sleep/</link>
+      <link>/launcher/sleep/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://flokkr.github.io/docs/launcher/sleep/</guid>
+      <guid>/launcher/sleep/</guid>
       <description> SLEEP: sleep for a specified amount of time.    Name Default Description     SLEEP_SECONDS  If set, the sleep bash command will be called with the value of the environment variable. Better to not use this plugin, if possible.    </description>
     </item>
     
