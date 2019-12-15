@@ -5,15 +5,15 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Flokkr.">
-		<link rel="icon" href="https://flokkr.github.io/favicon.ico">
+		<link rel="icon" href="https://flokkr.gitub.io/favicon.ico">
 		<title>Byteman: X-ray for Hadoop - Flokkr.</title>
 		
-		<link rel="stylesheet" href="https://flokkr.github.io/css/highlight/default.css">
-		<link rel="stylesheet" href="https://flokkr.github.io/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://flokkr.github.io/css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="https://flokkr.github.io/css/theme.css">
-		<link rel="stylesheet" href="https://flokkr.github.io/css/bootie-docs.css">
-		<link rel="stylesheet" href="https://flokkr.github.io/css/site.css">
+		<link rel="stylesheet" href="https://flokkr.gitub.io/css/highlight/default.css">
+		<link rel="stylesheet" href="https://flokkr.gitub.io/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://flokkr.gitub.io/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="https://flokkr.gitub.io/css/theme.css">
+		<link rel="stylesheet" href="https://flokkr.gitub.io/css/bootie-docs.css">
+		<link rel="stylesheet" href="https://flokkr.gitub.io/css/site.css">
 	</head>
 
 <body role="document">
@@ -28,11 +28,11 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="https://flokkr.github.io/">Flokkr.</a>
+				<a class="navbar-brand" href="https://flokkr.gitub.io/">Flokkr.</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li ><a href="https://flokkr.github.io/">Home</a></li>
+					<li ><a href="https://flokkr.gitub.io/">Home</a></li>
 			
 			
 				
@@ -61,12 +61,9 @@
 					<span><time datetime="2018-06-18">June 18, 2018</time></span>
 				</div>
 				<section>
-					<p>At least half of the powers of the containers are in the launcher script. Flokkr <a href="https://github.com/flokkr/launcher" target="_blank">launcher script</a> has a very simple and plugable structure to provide multiple additional functionality side by side.</p>
-
-<p>One interesting function is the instrumentation with byteman: <a href="http://byteman.jboss.org/" target="_blank">byteman</a> is a library to instrument / modify the java code runtime according to simple text based rules.</p>
-
+					<p>At least half of the powers of the containers are in the launcher script. Flokkr <a href="https://github.com/flokkr/launcher">launcher script</a> has a very simple and plugable structure to provide multiple additional functionality side by side.</p>
+<p>One interesting function is the instrumentation with byteman: <a href="http://byteman.jboss.org/">byteman</a> is a library to instrument / modify the java code runtime according to simple text based rules.</p>
 <p>As an example this is a byteman rule which prints out all the hadoop-rpc traffic between components. As hadoop rpc has some well defined interfaces the only thing what we need is to instrument the rpc interfaces at the right place:</p>
-
 <pre><code>RULE Hadoop RPC request
 INTERFACE ^com.google.protobuf.BlockingService
 METHOD callBlockingMethod
@@ -93,16 +90,10 @@ IF true
 DO link(Thread.currentThread(), &quot;source&quot;, $0.connection.toString())
 ENDRULE
 
-</code></pre>
-
-<p>If you have the instrumentation the only thing what you need is activate the byteman script by the launcher. <a href="https://github.com/flokkr/launcher/blob/master/plugins/017_byteman/byteman.sh" target="_blank">There is</a> a simple launcher segment to to activate the byteman script with adding the java agent arguments. The only thing is what you need is setting an environment variable to activate it:</p>
-
+</code></pre><p>If you have the instrumentation the only thing what you need is activate the byteman script by the launcher. <a href="https://github.com/flokkr/launcher/blob/master/plugins/017_byteman/byteman.sh">There is</a> a simple launcher segment to to activate the byteman script with adding the java agent arguments. The only thing is what you need is setting an environment variable to activate it:</p>
 <pre><code> environment:
               BYTEMAN_SCRIPT_URL: https://gist.githubusercontent.com/elek/0589a91b4d55afb228279f6c4f04a525/raw/8bb4e03de7397c8a9d9bb74a5ec80028b42575c4/hadoop.btm
-</code></pre>
-
-<p>With this one line modification all the hadoop rpc calls will be printed out to the standard output:</p>
-
+</code></pre><p>With this one line modification all the hadoop rpc calls will be printed out to the standard output:</p>
 <pre><code>namenode_1  | --&gt; RPC message request: VersionRequestProto from 172.22.0.2:48756
 namenode_1  |
 namenode_1  | --&gt; RPC message response: VersionRequestProto to 172.22.0.2:48756
@@ -151,7 +142,6 @@ namenode_1  |   }
 namenode_1  |   softwareVersion: &quot;3.1.0&quot;
 namenode_1  | }
 </code></pre>
-
 				</section>
 			</article>
 		</main>
@@ -167,7 +157,7 @@ namenode_1  | }
 			<ul>
 				<li><strong><a href="#title">Byteman: X-ray for Hadoop</a></strong></li>
 			</ul>
-			
+			<nav id="TableOfContents"></nav>
 		</div>
 	</div>
 	<div class="sidebar-module">
@@ -180,17 +170,17 @@ namenode_1  | }
 		<h4 class="sidebar-heading">Tags</h4>
 		<div class="tag-box">
 		
-			<a class="tag-item" href="https://flokkr.github.io/tags/compose">compose</a>
+			<a class="tag-item" href="https://flokkr.gitub.io/tags/compose">compose</a>
 		
-			<a class="tag-item" href="https://flokkr.github.io/tags/docker">docker</a>
+			<a class="tag-item" href="https://flokkr.gitub.io/tags/docker">docker</a>
 		
-			<a class="tag-item" href="https://flokkr.github.io/tags/hadoop">hadoop</a>
+			<a class="tag-item" href="https://flokkr.gitub.io/tags/hadoop">hadoop</a>
 		
-			<a class="tag-item" href="https://flokkr.github.io/tags/ozone">ozone</a>
+			<a class="tag-item" href="https://flokkr.gitub.io/tags/ozone">ozone</a>
 		
-			<a class="tag-item" href="https://flokkr.github.io/tags/robot">robot</a>
+			<a class="tag-item" href="https://flokkr.gitub.io/tags/robot">robot</a>
 		
-			<a class="tag-item" href="https://flokkr.github.io/tags/testing">testing</a>
+			<a class="tag-item" href="https://flokkr.gitub.io/tags/testing">testing</a>
 		
 		</div>
 	</div>
@@ -218,13 +208,13 @@ namenode_1  | }
 
 
 
-<script src="https://flokkr.github.io/js/jquery.min.js"></script>
-<script src="https://flokkr.github.io/js/bootstrap.min.js"></script>
+<script src="https://flokkr.gitub.io/js/jquery.min.js"></script>
+<script src="https://flokkr.gitub.io/js/bootstrap.min.js"></script>
 
-<script src="https://flokkr.github.io/js/highlight.pack.js"></script>
+<script src="https://flokkr.gitub.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<script src="https://flokkr.github.io/js/ie10-viewport-bug-workaround.js"></script>
-<script src="https://flokkr.github.io/js/bootie-docs.js"></script>
+<script src="https://flokkr.gitub.io/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://flokkr.gitub.io/js/bootie-docs.js"></script>
 
 </body>
 </html>

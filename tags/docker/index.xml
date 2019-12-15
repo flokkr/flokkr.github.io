@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>docker on Flokkr.</title>
-    <link>https://flokkr.github.io/tags/docker/</link>
+    <link>https://flokkr.gitub.io/tags/docker/</link>
     <description>Recent content in docker on Flokkr.</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 10 Apr 2018 22:14:43 +0200</lastBuildDate>
     
-	<atom:link href="https://flokkr.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://flokkr.gitub.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Katacoda</title>
-      <link>https://flokkr.github.io/post/katacoda/</link>
+      <link>https://flokkr.gitub.io/post/katacoda/</link>
       <pubDate>Tue, 10 Apr 2018 22:14:43 +0200</pubDate>
       
-      <guid>https://flokkr.github.io/post/katacoda/</guid>
+      <guid>https://flokkr.gitub.io/post/katacoda/</guid>
       <description>Katacoda is docker sandbox for creating tutorials and interactive scenarios. It supports multiple environments including kubernetes/swarm/docker.
 Flokkr images are easy to use images for Apache Hadoop/Spakr and other bigdata products and katacoda platform is ideal to use example compose files in a learning environment.
 An an example: to try out Ozone (which is an experimetal object store on top of Hadoop/Hdfs components) you can visit this experimetnal katacoda scenario: https://www.katacoda.com/elek/scenarios/ozone101</description>
@@ -23,10 +23,10 @@ An an example: to try out Ozone (which is an experimetal object store on top of 
     
     <item>
       <title>Integration tests with robot framework</title>
-      <link>https://flokkr.github.io/post/mrrobot/</link>
+      <link>https://flokkr.gitub.io/post/mrrobot/</link>
       <pubDate>Sat, 17 Mar 2018 23:12:43 +0100</pubDate>
       
-      <guid>https://flokkr.github.io/post/mrrobot/</guid>
+      <guid>https://flokkr.gitub.io/post/mrrobot/</guid>
       <description>Robot framework is a generic integration test framework. As an experiment I added robot based integrations tests to the runtime-compose.
 This repository contains example docker-compose files to start various type of hadoop/spark/&amp;hellip; clusters. Now it also contains some robot scripts to check if the docker-compose files are still vaild with the latest images. See this tile as an example.
 *** Settings *** Documentation Smoketest with hdsl/ozone. Library OperatingSystem Suite Setup Startup Cluster Suite Teardown Docker compose down Resource .</description>
@@ -34,10 +34,10 @@ This repository contains example docker-compose files to start various type of h
     
     <item>
       <title>Start Hadoop Hdfs HA cluster with docker-compose</title>
-      <link>https://flokkr.github.io/post/hadoop-hdfs-ha-docker-compose/</link>
+      <link>https://flokkr.gitub.io/post/hadoop-hdfs-ha-docker-compose/</link>
       <pubDate>Fri, 19 Jan 2018 23:12:43 +0100</pubDate>
       
-      <guid>https://flokkr.github.io/post/hadoop-hdfs-ha-docker-compose/</guid>
+      <guid>https://flokkr.gitub.io/post/hadoop-hdfs-ha-docker-compose/</guid>
       <description>Recently I had to start different type of Hadoop Hdfs clusters in my local environment, such as HA, router based federation, federation, etc.
 Hadoop is not designed to run in containers but with very low effort it works very well. For example a non-HA cluster could be started easily as the datanode will try to connect to the namenode again and again until the namenode is started.
 There is just one precondition: the namenode directory should be formatted, but it could be handled by a custom launcher script which includes the required steps.</description>

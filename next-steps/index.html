@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Flokkr.">
+		<link rel="icon" href="https://flokkr.gitub.io/favicon.ico">
+		<title>Next steps - Flokkr.</title>
+		
+		<link rel="stylesheet" href="https://flokkr.gitub.io/css/highlight/default.css">
+		<link rel="stylesheet" href="https://flokkr.gitub.io/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://flokkr.gitub.io/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="https://flokkr.gitub.io/css/theme.css">
+		<link rel="stylesheet" href="https://flokkr.gitub.io/css/bootie-docs.css">
+		<link rel="stylesheet" href="https://flokkr.gitub.io/css/site.css">
+	</head>
+
+<body role="document">
+
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="https://flokkr.gitub.io/">Flokkr.</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li ><a href="https://flokkr.gitub.io/">Home</a></li>
+			
+			
+				
+					<li ><a href="https://github.com/flokkr">Source</a></li>
+				
+					<li ><a href="https://flokkr.github.io/docs">Documentation</a></li>
+				
+			
+				
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+
+<div class="container">
+
+
+<div class="row">
+	<div class="col-sm-8 doc-main">
+		<main role="main">
+			<article>
+				<a id="title"></a>
+				<h1 class="doc-entry-title">Next steps</h1>
+				<div class="doc-entry-meta">
+					<span><time datetime="2019-12-14">December 14, 2019</time></span>
+				</div>
+				<section>
+					<p>The next steps after the first cluster is the customization. It can be done by adding any kind of custom transformation or reuse ready-to-use transformations.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">&gt; flekszible transformation search
++---------------------+--------------------------------------------------------------------------------------------+
+| name                | description                                                                                |
++---------------------+--------------------------------------------------------------------------------------------+
+| Namespace           | Use explicit namespace                                                                     |
+| Pipe                | Transform content with external shell command.                                             |
+| Remove              | Remove yaml fragment from an existing k8s resources                                        |
+| ozone/emptydir      | Add empty dir based ephemeral persistence                                                  |
+| ozone/onenode       | remove scheduling rules to make it possible to run multiple datanode on the same k8s node. |
+| ozone/persistence   | Add real PVC based persistence                                                             |
+| ozone/profiler      | Enable profiler endpoint.                                                                  |
+| Add                 | Extends yaml fragment to an existing k8s resources                                         |
+| Image               | Replaces the docker image definition                                                       |
+| Prefix              | Add same prefix to all the k8s names                                                       |
+| ozone/devtracing    | Enable jaeger tracing for ALL the requests (<span style="color:#ae81ff">100</span>% sampling)                                 |
+| ozone/grafana       | Enable grafana for ozone dashboards                                                        |
+| ozone/memdisk       | Use memdisks for empty dirs                                                                |
+| ozone/ozonefs       | copy ozonefs jar file to a temporary emptydir volume                                       |
+| Change              | Replace existing value literal in the yaml struct                                          |
+| ConfigHash          | Add labels to the k8s resources with the hash of the used configmaps                       |
+| DaemonToStatefulSet | Converts daemonset to statefulset                                                          |
+| K8sWriter           | Internal transformation to print out k8s resources as yaml                                 |
+| PublishService      | Creates additional service for internal services                                           |
+| Replace             | Replace a yaml subtree with an other one.                                                  |
+| ozone/tracing       | Enable jaeger tracing                                                                      |
+| PublishStatefulSet  | Creates additional NodeType service for StatefulSet internal services                      |
+| zookeeper/scale     | Set the number of the zookeeper replicas.                                                  |
+| ozone/prometheus    | Enable prometheus monitoring in Ozone                                                      |
++---------------------+--------------------------------------------------------------------------------------------+
+</code></pre></div><p>The prefixed transformations (like <code>zookeeper/scale</code>) are usually combined, pre-defined transformation, you can apply it with command line (<code>flekszible transformation add ozone/emptydir</code>) or with editing the <code>Flekszible</code> descriptor.</p>
+<p>(Note: all the previous command line just modified this descriptor)</p>
+<p>In this example we imported Ozone app, with a transformation which adds emptyDir based persistence:</p>
+<p>Content of <code>Flekszible</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">import:
+ - path: ozone
+   transformations:
+   - type: ozone/emptydir
+</code></pre></div><p>In the next example we imported kafka, kafka-demo, flink, but the flink resources are transformed to add a custom <code>imagePullPolicy</code>:</p>
+<p>Content of <code>Flekszible</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">import:
+ - path: kafka
+ - path: kafka-demo
+ - path: flink
+   transformations:
+   - type: add
+     path:
+       - spec
+       - template
+       - spec
+       - containers
+       - <span style="color:#e6db74">&#34;.*&#34;</span>
+     value:
+       imagePullPolicy: IfNotPresent
+</code></pre></div>
+				</section>
+			</article>
+		</main>
+	</div> 
+
+	
+
+<div class="col-sm-3 col-sm-offset-1 doc-sidebar">
+	<div id="sidebar">
+	<div class="sidebar-module">
+		<div class="sidebar-toc">
+			<h4 class="sidebar-heading">Table of Contents</h4>
+			<ul>
+				<li><strong><a href="#title">Next steps</a></strong></li>
+			</ul>
+			<nav id="TableOfContents"></nav>
+		</div>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Pages in Categories</h4>
+		<ul class="sidebar-category-list">
+		
+		</ul>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Tags</h4>
+		<div class="tag-box">
+		
+			<a class="tag-item" href="https://flokkr.gitub.io/tags/compose">compose</a>
+		
+			<a class="tag-item" href="https://flokkr.gitub.io/tags/docker">docker</a>
+		
+			<a class="tag-item" href="https://flokkr.gitub.io/tags/hadoop">hadoop</a>
+		
+			<a class="tag-item" href="https://flokkr.gitub.io/tags/ozone">ozone</a>
+		
+			<a class="tag-item" href="https://flokkr.gitub.io/tags/robot">robot</a>
+		
+			<a class="tag-item" href="https://flokkr.gitub.io/tags/testing">testing</a>
+		
+		</div>
+	</div>
+	</div>
+</div>
+
+</div> 
+
+
+<hr />
+
+<div class="row">
+	<div class="col-sm-8">
+		<p class="doc-footer-em"><a href="#" onclick="resetSidebarPos()">Back to TOP</a></p>
+	</div>
+</div>
+
+</div> 
+
+<footer class="doc-footer">
+	
+	
+	<p>Powered by <strong><a href="https://github.com/progrhyme/hugo-theme-bootie-docs">Bootie Docs</a></strong> - theme for <a href="http://gohugo.io/">Hugo</a> by <a href="https://github.com/progrhyme/">progrhyme</a>.</p>
+</footer>
+
+
+
+<script src="https://flokkr.gitub.io/js/jquery.min.js"></script>
+<script src="https://flokkr.gitub.io/js/bootstrap.min.js"></script>
+
+<script src="https://flokkr.gitub.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="https://flokkr.gitub.io/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://flokkr.gitub.io/js/bootie-docs.js"></script>
+
+</body>
+</html>
