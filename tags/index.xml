@@ -2,65 +2,65 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Flokkr.</title>
-    <link>https://flokkr.github.io/tags/</link>
+    <link>https://flokkr.gitub.io/tags/</link>
     <description>Recent content in Tags on Flokkr.</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 10 Apr 2018 22:14:43 +0200</lastBuildDate>
     
-	<atom:link href="https://flokkr.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://flokkr.gitub.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>docker</title>
-      <link>https://flokkr.github.io/tags/docker/</link>
+      <link>https://flokkr.gitub.io/tags/docker/</link>
       <pubDate>Tue, 10 Apr 2018 22:14:43 +0200</pubDate>
       
-      <guid>https://flokkr.github.io/tags/docker/</guid>
+      <guid>https://flokkr.gitub.io/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hadoop</title>
-      <link>https://flokkr.github.io/tags/hadoop/</link>
+      <link>https://flokkr.gitub.io/tags/hadoop/</link>
       <pubDate>Tue, 10 Apr 2018 22:14:43 +0200</pubDate>
       
-      <guid>https://flokkr.github.io/tags/hadoop/</guid>
+      <guid>https://flokkr.gitub.io/tags/hadoop/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ozone</title>
-      <link>https://flokkr.github.io/tags/ozone/</link>
+      <link>https://flokkr.gitub.io/tags/ozone/</link>
       <pubDate>Tue, 10 Apr 2018 22:14:43 +0200</pubDate>
       
-      <guid>https://flokkr.github.io/tags/ozone/</guid>
+      <guid>https://flokkr.gitub.io/tags/ozone/</guid>
       <description></description>
     </item>
     
     <item>
       <title>robot</title>
-      <link>https://flokkr.github.io/tags/robot/</link>
+      <link>https://flokkr.gitub.io/tags/robot/</link>
       <pubDate>Sat, 17 Mar 2018 23:12:43 +0100</pubDate>
       
-      <guid>https://flokkr.github.io/tags/robot/</guid>
+      <guid>https://flokkr.gitub.io/tags/robot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>testing</title>
-      <link>https://flokkr.github.io/tags/testing/</link>
+      <link>https://flokkr.gitub.io/tags/testing/</link>
       <pubDate>Sat, 17 Mar 2018 23:12:43 +0100</pubDate>
       
-      <guid>https://flokkr.github.io/tags/testing/</guid>
+      <guid>https://flokkr.gitub.io/tags/testing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>compose</title>
-      <link>https://flokkr.github.io/tags/compose/</link>
+      <link>https://flokkr.gitub.io/tags/compose/</link>
       <pubDate>Fri, 19 Jan 2018 23:12:43 +0100</pubDate>
       
-      <guid>https://flokkr.github.io/tags/compose/</guid>
+      <guid>https://flokkr.gitub.io/tags/compose/</guid>
       <description></description>
     </item>
     

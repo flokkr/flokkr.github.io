@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on Flokkr.</title>
-    <link>https://flokkr.github.io/page/</link>
+    <link>https://flokkr.gitub.io/page/</link>
     <description>Recent content in Pages on Flokkr.</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 14 Dec 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://flokkr.github.io/page/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://flokkr.gitub.io/page/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Getting started</title>
-      <link>https://flokkr.github.io/getting-started/</link>
+      <link>https://flokkr.gitub.io/getting-started/</link>
       <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://flokkr.github.io/getting-started/</guid>
+      <guid>https://flokkr.gitub.io/getting-started/</guid>
       <description>Flokkr provides tools and building elements to create your own cluster. It&#39;s based on Flekszible which is a highly flexible Kubernetes resource generator.
 To start, install Flekszible and register Flokkr sources:
 &amp;gt;flekszible source search Available flekszible repositories: +------------------------------------+-----------------------------------------------------------------------------+ | name | description | +------------------------------------+-----------------------------------------------------------------------------+ | github.com/flokkr/k8s | Flekszible based kubernetes manfiest templates for Apache bigdata projects. | | github.com/flokkr/infra-flekszible | Flekszible based Kubernetes recipes for logging/monitoring/ci | | github.com/elek/ozone-flekszible | Apache Hadoop Ozone deployment definitions with flekszible | +------------------------------------+-----------------------------------------------------------------------------+ Add flekszible topic to your repository to show your repository here.</description>
@@ -23,20 +23,20 @@ To start, install Flekszible and register Flokkr sources:
     
     <item>
       <title>Next steps</title>
-      <link>https://flokkr.github.io/next-steps/</link>
+      <link>https://flokkr.gitub.io/next-steps/</link>
       <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://flokkr.github.io/next-steps/</guid>
+      <guid>https://flokkr.gitub.io/next-steps/</guid>
       <description>The next steps after the first cluster is the customization. It can be done by adding any kind of custom transformation or reuse ready-to-use transformations.
 &amp;gt; flekszible transformation search +---------------------+--------------------------------------------------------------------------------------------+ | name | description | +---------------------+--------------------------------------------------------------------------------------------+ | Namespace | Use explicit namespace | | Pipe | Transform content with external shell command. | | Remove | Remove yaml fragment from an existing k8s resources | | ozone/emptydir | Add empty dir based ephemeral persistence | | ozone/onenode | remove scheduling rules to make it possible to run multiple datanode on the same k8s node.</description>
     </item>
     
     <item>
       <title>Presentations</title>
-      <link>https://flokkr.github.io/presentations/</link>
+      <link>https://flokkr.gitub.io/presentations/</link>
       <pubDate>Mon, 18 Jun 2018 12:43:54 +0200</pubDate>
       
-      <guid>https://flokkr.github.io/presentations/</guid>
+      <guid>https://flokkr.gitub.io/presentations/</guid>
       <description> 4 ways to Dockerize Apache bigdata project (Docker meetup, Budapest) From docker to Kubernetes: Running Hadoop in a cloud-natie way (Berlin Buzzwords 2018) Apache Hadoop Ozone in the cloud-native word: Use Hadoop as a Kubernetes persistent storage provider (Apache Roadshow EU, 2018)  </description>
     </item>
     
