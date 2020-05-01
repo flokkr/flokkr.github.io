@@ -2,41 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Flokkr.</title>
-    <link>https://flokkr.gitub.io/</link>
+    <link>https://flokkr.github.io/</link>
     <description>Recent content on Flokkr.</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 14 Dec 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://flokkr.gitub.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://flokkr.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Getting started</title>
-      <link>https://flokkr.gitub.io/getting-started/</link>
+      <link>https://flokkr.github.io/getting-started/</link>
       <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://flokkr.gitub.io/getting-started/</guid>
-      <description>Flokkr provides tools and building elements to create your own cluster. It&#39;s based on Flekszible which is a highly flexible Kubernetes resource generator.
+      <guid>https://flokkr.github.io/getting-started/</guid>
+      <description>Flokkr provides tools and building elements to create your own cluster. It&amp;rsquo;s based on Flekszible which is a highly flexible Kubernetes resource generator.
 To start, install Flekszible and register Flokkr sources:
 &amp;gt;flekszible source search Available flekszible repositories: +------------------------------------+-----------------------------------------------------------------------------+ | name | description | +------------------------------------+-----------------------------------------------------------------------------+ | github.com/flokkr/k8s | Flekszible based kubernetes manfiest templates for Apache bigdata projects. | | github.com/flokkr/infra-flekszible | Flekszible based Kubernetes recipes for logging/monitoring/ci | | github.com/elek/ozone-flekszible | Apache Hadoop Ozone deployment definitions with flekszible | +------------------------------------+-----------------------------------------------------------------------------+ Add flekszible topic to your repository to show your repository here.</description>
     </item>
     
     <item>
       <title>Next steps</title>
-      <link>https://flokkr.gitub.io/next-steps/</link>
+      <link>https://flokkr.github.io/next-steps/</link>
       <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://flokkr.gitub.io/next-steps/</guid>
+      <guid>https://flokkr.github.io/next-steps/</guid>
       <description>The next steps after the first cluster is the customization. It can be done by adding any kind of custom transformation or reuse ready-to-use transformations.
 &amp;gt; flekszible transformation search +---------------------+--------------------------------------------------------------------------------------------+ | name | description | +---------------------+--------------------------------------------------------------------------------------------+ | Namespace | Use explicit namespace | | Pipe | Transform content with external shell command. | | Remove | Remove yaml fragment from an existing k8s resources | | ozone/emptydir | Add empty dir based ephemeral persistence | | ozone/onenode | remove scheduling rules to make it possible to run multiple datanode on the same k8s node.</description>
     </item>
     
     <item>
       <title>The big cleanup</title>
-      <link>https://flokkr.gitub.io/post/cleanup/</link>
+      <link>https://flokkr.github.io/post/cleanup/</link>
       <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://flokkr.gitub.io/post/cleanup/</guid>
+      <guid>https://flokkr.github.io/post/cleanup/</guid>
       <description>Flokkr project was an experimental area from the beginning. After a while I realized that my containerization work requires too many repositories and I moved them to this organization. The repositories contained mutiple experiments to containerize Hadoop/Spark and other bigdata projects.
 I run them with:
  Kubernetes (using plain kubernetes resource files) Kubernetes (using Helm charts) docker-compose (local pseudo clusters) Docker swarm Nomad + Consul  Most of them are no longer maintained.</description>
@@ -44,19 +44,19 @@ I run them with:
     
     <item>
       <title>Presentations</title>
-      <link>https://flokkr.gitub.io/presentations/</link>
+      <link>https://flokkr.github.io/presentations/</link>
       <pubDate>Mon, 18 Jun 2018 12:43:54 +0200</pubDate>
       
-      <guid>https://flokkr.gitub.io/presentations/</guid>
+      <guid>https://flokkr.github.io/presentations/</guid>
       <description> 4 ways to Dockerize Apache bigdata project (Docker meetup, Budapest) From docker to Kubernetes: Running Hadoop in a cloud-natie way (Berlin Buzzwords 2018) Apache Hadoop Ozone in the cloud-native word: Use Hadoop as a Kubernetes persistent storage provider (Apache Roadshow EU, 2018)  </description>
     </item>
     
     <item>
       <title>Byteman: X-ray for Hadoop</title>
-      <link>https://flokkr.gitub.io/post/byteman/</link>
+      <link>https://flokkr.github.io/post/byteman/</link>
       <pubDate>Mon, 18 Jun 2018 12:25:02 +0200</pubDate>
       
-      <guid>https://flokkr.gitub.io/post/byteman/</guid>
+      <guid>https://flokkr.github.io/post/byteman/</guid>
       <description>At least half of the powers of the containers are in the launcher script. Flokkr launcher script has a very simple and plugable structure to provide multiple additional functionality side by side.
 One interesting function is the instrumentation with byteman: byteman is a library to instrument / modify the java code runtime according to simple text based rules.
 As an example this is a byteman rule which prints out all the hadoop-rpc traffic between components.</description>
@@ -64,10 +64,10 @@ As an example this is a byteman rule which prints out all the hadoop-rpc traffic
     
     <item>
       <title>Katacoda</title>
-      <link>https://flokkr.gitub.io/post/katacoda/</link>
+      <link>https://flokkr.github.io/post/katacoda/</link>
       <pubDate>Tue, 10 Apr 2018 22:14:43 +0200</pubDate>
       
-      <guid>https://flokkr.gitub.io/post/katacoda/</guid>
+      <guid>https://flokkr.github.io/post/katacoda/</guid>
       <description>Katacoda is docker sandbox for creating tutorials and interactive scenarios. It supports multiple environments including kubernetes/swarm/docker.
 Flokkr images are easy to use images for Apache Hadoop/Spakr and other bigdata products and katacoda platform is ideal to use example compose files in a learning environment.
 An an example: to try out Ozone (which is an experimetal object store on top of Hadoop/Hdfs components) you can visit this experimetnal katacoda scenario: https://www.katacoda.com/elek/scenarios/ozone101</description>
@@ -75,10 +75,10 @@ An an example: to try out Ozone (which is an experimetal object store on top of 
     
     <item>
       <title>Integration tests with robot framework</title>
-      <link>https://flokkr.gitub.io/post/mrrobot/</link>
+      <link>https://flokkr.github.io/post/mrrobot/</link>
       <pubDate>Sat, 17 Mar 2018 23:12:43 +0100</pubDate>
       
-      <guid>https://flokkr.gitub.io/post/mrrobot/</guid>
+      <guid>https://flokkr.github.io/post/mrrobot/</guid>
       <description>Robot framework is a generic integration test framework. As an experiment I added robot based integrations tests to the runtime-compose.
 This repository contains example docker-compose files to start various type of hadoop/spark/&amp;hellip; clusters. Now it also contains some robot scripts to check if the docker-compose files are still vaild with the latest images. See this tile as an example.
 *** Settings *** Documentation Smoketest with hdsl/ozone. Library OperatingSystem Suite Setup Startup Cluster Suite Teardown Docker compose down Resource .</description>
@@ -86,10 +86,10 @@ This repository contains example docker-compose files to start various type of h
     
     <item>
       <title>Start Hadoop Hdfs HA cluster with docker-compose</title>
-      <link>https://flokkr.gitub.io/post/hadoop-hdfs-ha-docker-compose/</link>
+      <link>https://flokkr.github.io/post/hadoop-hdfs-ha-docker-compose/</link>
       <pubDate>Fri, 19 Jan 2018 23:12:43 +0100</pubDate>
       
-      <guid>https://flokkr.gitub.io/post/hadoop-hdfs-ha-docker-compose/</guid>
+      <guid>https://flokkr.github.io/post/hadoop-hdfs-ha-docker-compose/</guid>
       <description>Recently I had to start different type of Hadoop Hdfs clusters in my local environment, such as HA, router based federation, federation, etc.
 Hadoop is not designed to run in containers but with very low effort it works very well. For example a non-HA cluster could be started easily as the datanode will try to connect to the namenode again and again until the namenode is started.
 There is just one precondition: the namenode directory should be formatted, but it could be handled by a custom launcher script which includes the required steps.</description>
