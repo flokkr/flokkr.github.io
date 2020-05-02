@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Flokkr.">
 		<link rel="icon" href="https://flokkr.github.io/favicon.ico">
-		<title>Posts - Flokkr.</title>
+		<title>Project update - Flokkr.</title>
 		
 		<link rel="stylesheet" href="https://flokkr.github.io/css/highlight/default.css">
 		<link rel="stylesheet" href="https://flokkr.github.io/css/bootstrap.min.css">
@@ -54,61 +54,55 @@
 <div class="row">
 	<div class="col-sm-8 doc-main">
 		<main role="main">
-			<div class="doc-list-header">
-				<h3>Pages in Posts</h3>
-			</div>
-			<div class="doc-list-entry">
-			<ul>
-	
-				<li><a class="doc-entry" href="/post/spring2020/">
-					<span class="doc-entry-title">Project update</span>
-					<span class="doc-entry-meta in-list">
-						(<time datetime="2020-05-01">May 01, 2020</time>)
-					</span>
-				</a></li>
-	
-				<li><a class="doc-entry" href="/post/cleanup/">
-					<span class="doc-entry-title">The big cleanup</span>
-					<span class="doc-entry-meta in-list">
-						(<time datetime="2019-02-08">February 08, 2019</time>)
-					</span>
-				</a></li>
-	
-				<li><a class="doc-entry" href="/post/byteman/">
-					<span class="doc-entry-title">Byteman: X-ray for Hadoop</span>
-					<span class="doc-entry-meta in-list">
-						(<time datetime="2018-06-18">June 18, 2018</time>)
-					</span>
-				</a></li>
-	
-				<li><a class="doc-entry" href="/post/katacoda/">
-					<span class="doc-entry-title">Katacoda</span>
-					<span class="doc-entry-meta in-list">
-						(<time datetime="2018-04-10">April 10, 2018</time>)
-					</span>
-				</a></li>
-	
-				<li><a class="doc-entry" href="/post/mrrobot/">
-					<span class="doc-entry-title">Integration tests with robot framework</span>
-					<span class="doc-entry-meta in-list">
-						(<time datetime="2018-03-17">March 17, 2018</time>)
-					</span>
-				</a></li>
-	
-				<li><a class="doc-entry" href="/post/hadoop-hdfs-ha-docker-compose/">
-					<span class="doc-entry-title">Start Hadoop Hdfs HA cluster with docker-compose</span>
-					<span class="doc-entry-meta in-list">
-						(<time datetime="2018-01-19">January 19, 2018</time>)
-					</span>
-				</a></li>
-	
-			</ul>
-			</div>
+			<article>
+				<a id="title"></a>
+				<h1 class="doc-entry-title">Project update</h1>
+				<div class="doc-entry-meta">
+					<span><time datetime="2020-05-01">May 01, 2020</time></span>
+				</div>
+				<section>
+					<p>Almost all the old experiments (Nomad, Swarm, compose) are removed or moved to attic.</p>
+<p>Some of the containers are not supported any more.</p>
+<p><a href="https://github.com/elek/flekszible">Flekszible</a> &ndash; which is the tool to generate Kubernetes resources files &ndash; is stable and usable.</p>
+<p>The main docker images are udated the latest version.</p>
+<p>Integration tests and <code>flekszible</code> scripts are added to the <code>docker-*</code> repositories. All commits is checked with a real Kubernetes cluster (Github Actions + Rancher K3s + Robotframework + flekszible).</p>
+<pre><code>+------------------+----------+-----------+------------+----------------------+
+|       REPO       | WORKFLOW |  STATUS   | CONCLUSION |         DATE         |
++------------------+----------+-----------+------------+----------------------+
+| docker-zookeeper | build    | completed | success    | 2020-05-02T11:28:11Z |
+| docker-zookeeper | test     | completed | success    | 2020-05-02T11:28:11Z |
+| docker-hadoop    | build    | completed | skipped    | 2020-05-02T12:13:24Z |
+| docker-hadoop    | test     | completed | success    | 2020-05-02T12:13:24Z |
+| docker-hbase     | build    | completed | success    | 2020-05-02T11:13:46Z |
+| docker-hbase     | test     | completed | success    | 2020-05-02T11:13:47Z |
+| docker-kafka     | build    | completed | success    | 2020-05-02T11:35:26Z |
+| docker-kafka     | test     | completed | success    | 2020-05-02T11:35:26Z |
+| docker-ozone     | build    | completed | success    | 2020-04-25T15:28:54Z |
+| docker-ozone     | test     | missing   |            |
+| docker-spark     | build    | completed | success    | 2020-05-02T09:52:49Z |
+| docker-spark     | test     | missing   |            |
+| docker-flink     | build    | completed | success    | 2020-05-02T09:50:47Z |
+| docker-flink     | test     | missing   |            |
++------------------+----------+-----------+------------+----------------------+
+</code></pre>
+				</section>
+			</article>
 		</main>
 	</div> 
 
 	
+
 <div class="col-sm-3 col-sm-offset-1 doc-sidebar">
+	<div id="sidebar">
+	<div class="sidebar-module">
+		<div class="sidebar-toc">
+			<h4 class="sidebar-heading">Table of Contents</h4>
+			<ul>
+				<li><strong><a href="#title">Project update</a></strong></li>
+			</ul>
+			<nav id="TableOfContents"></nav>
+		</div>
+	</div>
 	<div class="sidebar-module">
 		<h4 class="sidebar-heading">Pages in Categories</h4>
 		<ul class="sidebar-category-list">
@@ -132,6 +126,7 @@
 			<a class="tag-item" href="https://flokkr.github.io/tags/testing">testing</a>
 		
 		</div>
+	</div>
 	</div>
 </div>
 
