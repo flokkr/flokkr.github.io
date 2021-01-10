@@ -73,63 +73,63 @@
 <p>The flokkr docker images contain a simple extensible <a href="https://github.com/flokkr/launcher">launcher script</a>. It&rsquo;s really just a collection of many conditions: according to the environment variables many action could be executed before the main application. One action is the namenode formatting, but it also contains a few simple utility such as sleep:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;</span>$SLEEP_SECONDS<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
    sleep $SLEEP_SECONDS</code></pre></div>
-<p>The final docker-compose file doesn&rsquo;t&rsquo; contain any special, just SLEEP_SECOND environment variables to ensure the namenodes are initialized in the right order:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
-<span style="color:#66d9ef">services</span>:
-   <span style="color:#66d9ef">namenode1</span>:
-      <span style="color:#66d9ef">image</span>: flokkr/hadoop:latest
-      <span style="color:#66d9ef">hostname</span>: namenode1
-      <span style="color:#66d9ef">ports</span>:
+<p>The final docker-compose file doesn&rsquo;t' contain any special, just SLEEP_SECOND environment variables to ensure the namenodes are initialized in the right order:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
+<span style="color:#f92672">services</span>:
+   <span style="color:#f92672">namenode1</span>:
+      <span style="color:#f92672">image</span>: <span style="color:#ae81ff">flokkr/hadoop:latest</span>
+      <span style="color:#f92672">hostname</span>: <span style="color:#ae81ff">namenode1</span>
+      <span style="color:#f92672">ports</span>:
          - <span style="color:#ae81ff">9870</span>:<span style="color:#ae81ff">9870</span>
-      <span style="color:#66d9ef">env_file</span>:
-        - ./config
-      <span style="color:#66d9ef">environment</span>:
-          <span style="color:#66d9ef">ENSURE_NAMENODE_DIR</span>: <span style="color:#e6db74">&#34;/tmp/hadoop-hadoop/dfs/name&#34;</span>
-          <span style="color:#66d9ef">SLEEP_SECONDS</span>: <span style="color:#ae81ff">20</span>
-      <span style="color:#66d9ef">command</span>: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;namenode&#34;</span>]
-   <span style="color:#66d9ef">namenode2</span>:
-      <span style="color:#66d9ef">image</span>: flokkr/hadoop:latest
-      <span style="color:#66d9ef">hostname</span>: namenode2
-      <span style="color:#66d9ef">ports</span>:
+      <span style="color:#f92672">env_file</span>:
+        - <span style="color:#ae81ff">./config</span>
+      <span style="color:#f92672">environment</span>:
+          <span style="color:#f92672">ENSURE_NAMENODE_DIR</span>: <span style="color:#e6db74">&#34;/tmp/hadoop-hadoop/dfs/name&#34;</span>
+          <span style="color:#f92672">SLEEP_SECONDS</span>: <span style="color:#ae81ff">20</span>
+      <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;namenode&#34;</span>]
+   <span style="color:#f92672">namenode2</span>:
+      <span style="color:#f92672">image</span>: <span style="color:#ae81ff">flokkr/hadoop:latest</span>
+      <span style="color:#f92672">hostname</span>: <span style="color:#ae81ff">namenode2</span>
+      <span style="color:#f92672">ports</span>:
          - <span style="color:#ae81ff">9871</span>:<span style="color:#ae81ff">9870</span>
-      <span style="color:#66d9ef">env_file</span>:
-        - ./config
-      <span style="color:#66d9ef">environment</span>:
-          <span style="color:#66d9ef">ENSURE_STANDBY_NAMENODE_DIR</span>: <span style="color:#e6db74">&#34;/tmp/hadoop-hadoop/dfs/name&#34;</span>
-          <span style="color:#66d9ef">SLEEP_SECONDS</span>: <span style="color:#ae81ff">40</span>
-      <span style="color:#66d9ef">command</span>: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;namenode&#34;</span>]
-   <span style="color:#66d9ef">journal1</span>:
-      <span style="color:#66d9ef">image</span>: flokkr/hadoop:latest
-      <span style="color:#66d9ef">hostname</span>: journal1
-      <span style="color:#66d9ef">env_file</span>:
-        - ./config
-      <span style="color:#66d9ef">command</span>: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;journalnode&#34;</span>]
-   <span style="color:#66d9ef">journal2</span>:
-      <span style="color:#66d9ef">image</span>: flokkr/hadoop:latest
-      <span style="color:#66d9ef">hostname</span>: journal2
-      <span style="color:#66d9ef">env_file</span>:
-        - ./config
-      <span style="color:#66d9ef">command</span>: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;journalnode&#34;</span>]
-   <span style="color:#66d9ef">journal3</span>:
-      <span style="color:#66d9ef">image</span>: flokkr/hadoop:latest
-      <span style="color:#66d9ef">hostname</span>: journal3
-      <span style="color:#66d9ef">env_file</span>:
-        - ./config
-      <span style="color:#66d9ef">command</span>: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;journalnode&#34;</span>]
-   <span style="color:#66d9ef">datanode</span>:
-      <span style="color:#66d9ef">image</span>: flokkr/hadoop:latest
-      <span style="color:#66d9ef">command</span>: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;datanode&#34;</span>]
-      <span style="color:#66d9ef">env_file</span>:
-        - ./config
-      <span style="color:#66d9ef">environment</span>:
-         <span style="color:#66d9ef">SLEEP_SECONDS</span>: <span style="color:#ae81ff">50</span>
-   <span style="color:#66d9ef">activator</span>:
-      <span style="color:#66d9ef">image</span>: flokkr/hadoop:latest
-      <span style="color:#66d9ef">command</span>: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;haadmin&#34;</span>, <span style="color:#e6db74">&#34;-transitionToActive&#34;</span>, <span style="color:#e6db74">&#34;nn1&#34;</span>]
-      <span style="color:#66d9ef">env_file</span>:
-        - ./config
-      <span style="color:#66d9ef">environment</span>:
-         <span style="color:#66d9ef">SLEEP_SECONDS</span>: <span style="color:#ae81ff">60</span></code></pre></div>
+      <span style="color:#f92672">env_file</span>:
+        - <span style="color:#ae81ff">./config</span>
+      <span style="color:#f92672">environment</span>:
+          <span style="color:#f92672">ENSURE_STANDBY_NAMENODE_DIR</span>: <span style="color:#e6db74">&#34;/tmp/hadoop-hadoop/dfs/name&#34;</span>
+          <span style="color:#f92672">SLEEP_SECONDS</span>: <span style="color:#ae81ff">40</span>
+      <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;namenode&#34;</span>]
+   <span style="color:#f92672">journal1</span>:
+      <span style="color:#f92672">image</span>: <span style="color:#ae81ff">flokkr/hadoop:latest</span>
+      <span style="color:#f92672">hostname</span>: <span style="color:#ae81ff">journal1</span>
+      <span style="color:#f92672">env_file</span>:
+        - <span style="color:#ae81ff">./config</span>
+      <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;journalnode&#34;</span>]
+   <span style="color:#f92672">journal2</span>:
+      <span style="color:#f92672">image</span>: <span style="color:#ae81ff">flokkr/hadoop:latest</span>
+      <span style="color:#f92672">hostname</span>: <span style="color:#ae81ff">journal2</span>
+      <span style="color:#f92672">env_file</span>:
+        - <span style="color:#ae81ff">./config</span>
+      <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;journalnode&#34;</span>]
+   <span style="color:#f92672">journal3</span>:
+      <span style="color:#f92672">image</span>: <span style="color:#ae81ff">flokkr/hadoop:latest</span>
+      <span style="color:#f92672">hostname</span>: <span style="color:#ae81ff">journal3</span>
+      <span style="color:#f92672">env_file</span>:
+        - <span style="color:#ae81ff">./config</span>
+      <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;journalnode&#34;</span>]
+   <span style="color:#f92672">datanode</span>:
+      <span style="color:#f92672">image</span>: <span style="color:#ae81ff">flokkr/hadoop:latest</span>
+      <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;datanode&#34;</span>]
+      <span style="color:#f92672">env_file</span>:
+        - <span style="color:#ae81ff">./config</span>
+      <span style="color:#f92672">environment</span>:
+         <span style="color:#f92672">SLEEP_SECONDS</span>: <span style="color:#ae81ff">50</span>
+   <span style="color:#f92672">activator</span>:
+      <span style="color:#f92672">image</span>: <span style="color:#ae81ff">flokkr/hadoop:latest</span>
+      <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;hdfs&#34;</span>, <span style="color:#e6db74">&#34;haadmin&#34;</span>, <span style="color:#e6db74">&#34;-transitionToActive&#34;</span>, <span style="color:#e6db74">&#34;nn1&#34;</span>]
+      <span style="color:#f92672">env_file</span>:
+        - <span style="color:#ae81ff">./config</span>
+      <span style="color:#f92672">environment</span>:
+         <span style="color:#f92672">SLEEP_SECONDS</span>: <span style="color:#ae81ff">60</span></code></pre></div>
 <p>To start a Hadoop HA cluster with docker:</p>
 <ol>
 <li><code>git clone https://github.com/flokkr/runtime-compose.git &amp;&amp; cd runtime-compose</code></li>

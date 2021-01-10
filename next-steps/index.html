@@ -56,59 +56,59 @@
 				</div>
 				<section>
 					<p>The next steps after the first cluster is the customization. It can be done by adding any kind of custom transformation or reuse ready-to-use transformations.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">&gt; flekszible transformation search
-+---------------------+--------------------------------------------------------------------------------------------+
-| name                | description                                                                                |
-+---------------------+--------------------------------------------------------------------------------------------+
-| Namespace           | Use explicit namespace                                                                     |
-| Pipe                | Transform content with external shell command.                                             |
-| Remove              | Remove yaml fragment from an existing k8s resources                                        |
-| ozone/emptydir      | Add empty dir based ephemeral persistence                                                  |
-| ozone/onenode       | remove scheduling rules to make it possible to run multiple datanode on the same k8s node. |
-| ozone/persistence   | Add real PVC based persistence                                                             |
-| ozone/profiler      | Enable profiler endpoint.                                                                  |
-| Add                 | Extends yaml fragment to an existing k8s resources                                         |
-| Image               | Replaces the docker image definition                                                       |
-| Prefix              | Add same prefix to all the k8s names                                                       |
-| ozone/devtracing    | Enable jaeger tracing for ALL the requests (<span style="color:#ae81ff">100</span>% sampling)                                 |
-| ozone/grafana       | Enable grafana for ozone dashboards                                                        |
-| ozone/memdisk       | Use memdisks for empty dirs                                                                |
-| ozone/ozonefs       | copy ozonefs jar file to a temporary emptydir volume                                       |
-| Change              | Replace existing value literal in the yaml struct                                          |
-| ConfigHash          | Add labels to the k8s resources with the hash of the used configmaps                       |
-| DaemonToStatefulSet | Converts daemonset to statefulset                                                          |
-| K8sWriter           | Internal transformation to print out k8s resources as yaml                                 |
-| PublishService      | Creates additional service for internal services                                           |
-| Replace             | Replace a yaml subtree with an other one.                                                  |
-| ozone/tracing       | Enable jaeger tracing                                                                      |
-| PublishStatefulSet  | Creates additional NodeType service for StatefulSet internal services                      |
-| zookeeper/scale     | Set the number of the zookeeper replicas.                                                  |
-| ozone/prometheus    | Enable prometheus monitoring in Ozone                                                      |
-+---------------------+--------------------------------------------------------------------------------------------+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">&gt; flekszible transformation search</span>
+<span style="color:#ae81ff">+---------------------+--------------------------------------------------------------------------------------------+</span>
+<span style="color:#ae81ff">| name                | description                                                                                |</span>
+<span style="color:#ae81ff">+---------------------+--------------------------------------------------------------------------------------------+</span>
+<span style="color:#ae81ff">| Namespace           | Use explicit namespace                                                                     |</span>
+<span style="color:#ae81ff">| Pipe                | Transform content with external shell command.                                             |</span>
+<span style="color:#ae81ff">| Remove              | Remove yaml fragment from an existing k8s resources                                        |</span>
+<span style="color:#ae81ff">| ozone/emptydir      | Add empty dir based ephemeral persistence                                                  |</span>
+<span style="color:#ae81ff">| ozone/onenode       | remove scheduling rules to make it possible to run multiple datanode on the same k8s node. |</span>
+<span style="color:#ae81ff">| ozone/persistence   | Add real PVC based persistence                                                             |</span>
+<span style="color:#ae81ff">| ozone/profiler      | Enable profiler endpoint.                                                                  |</span>
+<span style="color:#ae81ff">| Add                 | Extends yaml fragment to an existing k8s resources                                         |</span>
+<span style="color:#ae81ff">| Image               | Replaces the docker image definition                                                       |</span>
+<span style="color:#ae81ff">| Prefix              | Add same prefix to all the k8s names                                                       |</span>
+<span style="color:#ae81ff">| ozone/devtracing    | Enable jaeger tracing for ALL the requests (100% sampling)                                 |</span>
+<span style="color:#ae81ff">| ozone/grafana       | Enable grafana for ozone dashboards                                                        |</span>
+<span style="color:#ae81ff">| ozone/memdisk       | Use memdisks for empty dirs                                                                |</span>
+<span style="color:#ae81ff">| ozone/ozonefs       | copy ozonefs jar file to a temporary emptydir volume                                       |</span>
+<span style="color:#ae81ff">| Change              | Replace existing value literal in the yaml struct                                          |</span>
+<span style="color:#ae81ff">| ConfigHash          | Add labels to the k8s resources with the hash of the used configmaps                       |</span>
+<span style="color:#ae81ff">| DaemonToStatefulSet | Converts daemonset to statefulset                                                          |</span>
+<span style="color:#ae81ff">| K8sWriter           | Internal transformation to print out k8s resources as yaml                                 |</span>
+<span style="color:#ae81ff">| PublishService      | Creates additional service for internal services                                           |</span>
+<span style="color:#ae81ff">| Replace             | Replace a yaml subtree with an other one.                                                  |</span>
+<span style="color:#ae81ff">| ozone/tracing       | Enable jaeger tracing                                                                      |</span>
+<span style="color:#ae81ff">| PublishStatefulSet  | Creates additional NodeType service for StatefulSet internal services                      |</span>
+<span style="color:#ae81ff">| zookeeper/scale     | Set the number of the zookeeper replicas.                                                  |</span>
+<span style="color:#ae81ff">| ozone/prometheus    | Enable prometheus monitoring in Ozone                                                      |</span>
+<span style="color:#ae81ff">+---------------------+--------------------------------------------------------------------------------------------+</span>
 </code></pre></div><p>The prefixed transformations (like <code>zookeeper/scale</code>) are usually combined, pre-defined transformation, you can apply it with command line (<code>flekszible transformation add ozone/emptydir</code>) or with editing the <code>Flekszible</code> descriptor.</p>
 <p>(Note: all the previous command line just modified this descriptor)</p>
 <p>In this example we imported Ozone app, with a transformation which adds emptyDir based persistence:</p>
 <p>Content of <code>Flekszible</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">import</span>:
- - <span style="color:#66d9ef">path</span>: ozone
-   <span style="color:#66d9ef">transformations</span>:
-   - <span style="color:#66d9ef">type</span>: ozone/emptydir
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">import</span>:
+ - <span style="color:#f92672">path</span>: <span style="color:#ae81ff">ozone</span>
+   <span style="color:#f92672">transformations</span>:
+   - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">ozone/emptydir</span>
 </code></pre></div><p>In the next example we imported kafka, kafka-demo, flink, but the flink resources are transformed to add a custom <code>imagePullPolicy</code>:</p>
 <p>Content of <code>Flekszible</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">import</span>:
- - <span style="color:#66d9ef">path</span>: kafka
- - <span style="color:#66d9ef">path</span>: kafka-demo
- - <span style="color:#66d9ef">path</span>: flink
-   <span style="color:#66d9ef">transformations</span>:
-   - <span style="color:#66d9ef">type</span>: add
-     <span style="color:#66d9ef">path</span>:
-       - spec
-       - template
-       - spec
-       - containers
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">import</span>:
+ - <span style="color:#f92672">path</span>: <span style="color:#ae81ff">kafka</span>
+ - <span style="color:#f92672">path</span>: <span style="color:#ae81ff">kafka-demo</span>
+ - <span style="color:#f92672">path</span>: <span style="color:#ae81ff">flink</span>
+   <span style="color:#f92672">transformations</span>:
+   - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">add</span>
+     <span style="color:#f92672">path</span>:
+       - <span style="color:#ae81ff">spec</span>
+       - <span style="color:#ae81ff">template</span>
+       - <span style="color:#ae81ff">spec</span>
+       - <span style="color:#ae81ff">containers</span>
        - <span style="color:#e6db74">&#34;.*&#34;</span>
-     <span style="color:#66d9ef">value</span>:
-       <span style="color:#66d9ef">imagePullPolicy</span>: IfNotPresent
+     <span style="color:#f92672">value</span>:
+       <span style="color:#f92672">imagePullPolicy</span>: <span style="color:#ae81ff">IfNotPresent</span>
 </code></pre></div>
 				</section>
 			</article>

@@ -3,7 +3,7 @@
 
 <html lang="en">
 	<head>
-	<meta name="generator" content="Hugo 0.73.0" />
+	<meta name="generator" content="Hugo 0.80.0" />
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Flokkr.">
@@ -83,7 +83,7 @@
         flink
      </td>
      <td>
-        [1.11.1 1.10.1 1.9.3]
+        [1.12.20 1.11.3]
       </td>
       <td>
           <a href="https://github.com/flokkr/docker-flink/tree/master/examples">Kubernetes example</a>
@@ -113,7 +113,7 @@
         hbase
      </td>
      <td>
-        [2.3.0 2.2.5]
+        [2.4.0 2.3.3 2.2.6]
       </td>
       <td>
           <a href="https://github.com/flokkr/docker-hbase/tree/master/examples">Kubernetes example</a>
@@ -128,7 +128,7 @@
         kafka
      </td>
      <td>
-        [2.5.0]
+        [2.7.0 2.6.0 2.5.0]
       </td>
       <td>
           <a href="https://github.com/flokkr/docker-kafka/tree/master/examples">Kubernetes example</a>
@@ -143,7 +143,7 @@
         ozone
      </td>
      <td>
-        [0.5.0-beta]
+        [1.0.0]
       </td>
       <td>
           <a href="https://github.com/flokkr/docker-ozone/tree/master/examples">Kubernetes example</a>
@@ -158,7 +158,7 @@
         spark
      </td>
      <td>
-        [2.4.5 2.4.6]
+        [3.0.0 2.4.5 2.4.6]
       </td>
       <td>
           <a href="https://github.com/flokkr/docker-spark/tree/master/examples">Kubernetes example</a>
@@ -173,7 +173,7 @@
         zookeeper
      </td>
      <td>
-        [3.6.1]
+        [3.6.2]
       </td>
       <td>
           <a href="https://github.com/flokkr/docker-zookeeper/tree/master/examples">Kubernetes example</a>
@@ -193,77 +193,77 @@
 			 <div>
           <p>Flokkr provides tools and building elements to create your own cluster. It&rsquo;s based on <a href="https://github.com/elek/flekszible">Flekszible</a> which is a highly flexible Kubernetes resource generator.</p>
 <p>To start, install Flekszible and register Flokkr sources:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">&gt;flekszible source search
-<span style="color:#66d9ef">Available flekszible repositories</span>:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">&gt;flekszible source search</span>
+<span style="color:#f92672">Available flekszible repositories</span>:
 
-+------------------------------------+-----------------------------------------------------------------------------+
-| name                               | description                                                                 |
-+------------------------------------+-----------------------------------------------------------------------------+
-| github.com/flokkr/k8s              | Flekszible based kubernetes manfiest templates for Apache bigdata projects. |
-| github.com/flokkr/infra-flekszible | Flekszible based Kubernetes recipes for logging/monitoring/ci               |
-| github.com/elek/ozone-flekszible   | Apache Hadoop Ozone deployment definitions with flekszible                  |
-+------------------------------------+-----------------------------------------------------------------------------<span style="color:#e6db74">+
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">Add flekszible topic to your repository to show your repository here.</span>
+<span style="color:#ae81ff">+------------------------------------+-----------------------------------------------------------------------------+</span>
+<span style="color:#ae81ff">| name                               | description                                                                 |</span>
+<span style="color:#ae81ff">+------------------------------------+-----------------------------------------------------------------------------+</span>
+<span style="color:#ae81ff">| github.com/flokkr/k8s              | Flekszible based kubernetes manfiest templates for Apache bigdata projects. |</span>
+<span style="color:#ae81ff">| github.com/flokkr/infra-flekszible | Flekszible based Kubernetes recipes for logging/monitoring/ci               |</span>
+<span style="color:#ae81ff">| github.com/elek/ozone-flekszible   | Apache Hadoop Ozone deployment definitions with flekszible                  |</span>
+<span style="color:#ae81ff">+------------------------------------+-----------------------------------------------------------------------------+</span>
+
+
+<span style="color:#ae81ff">Add flekszible topic to your repository to show your repository here.</span>
 </code></pre></div><p>Register main Flokkr repositories. The repositories contain the Kubernetes resource definitions (together with optional transformations) for the specific projects.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">&gt; flekszible source add github.com/flokkr/k8s
-&gt; flekszible source add github.com/elek/&gt; ozone-flekszible
-&gt; flekszible source add github.com/flokkr/infra-flekszible
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">&gt; flekszible source add github.com/flokkr/k8s</span>
+<span style="color:#ae81ff">&gt; flekszible source add github.com/elek/&gt; ozone-flekszible</span>
+<span style="color:#ae81ff">&gt; flekszible source add github.com/flokkr/infra-flekszible</span>
 </code></pre></div><p>Now you can list the available components:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">&gt; flekszible app search
-<span style="color:#66d9ef">INFO[0000] Input dir: /tmp, output dir</span>: /tmp
-INFO[<span style="color:#ae81ff">0000</span>] Reading resources from /tmp/resources
-+--------------------------+------------------------------------------------------------------+
-| path                     | description                                                      |
-+--------------------------+------------------------------------------------------------------+
-| flink                    | Apache Flink                                                     |
-| grafana                  | Grafana dashboard server                                         |
-| hdfs                     | Apache Hadoop HDFS base setup                                    |
-| hdfs-ha                  | Apache Hadoop HDFS, HA setup                                     |
-| jaeger                   | Jaeger tracing server                                            |
-| kafka                    | Apache Kafka                                                     |
-| kafka-demo               | Simple console producer / consumer for Kafka                     |
-| krb5-dev                 | Unsecure MIT kerberos server for DEVELOPMENT only                |
-| krb5-dev/getkeystore     | Sidecar definition to import java trust/keystore from vault      |
-| monitor                  | K8s level monitoring                                             |
-| pv-test                  | Nginx example deployment with persistent volume claim.           |
-| zookeeper                | Scalable Apache Zookeeper setup                                  |
-| ozone                    | Apache Hadoop Ozone                                              |
-| ozone/freon              | Load test tool for Apache Hadoop Ozone                           |
-| anonymous-proxy          | permission to access proxy url by anonymous users                |
-| cadvisor                 | CAdvisor node level container metrics                            |
-| grafana                  | Grafana dashboard server                                         |
-| jaeger                   | Jaeger tracing server                                            |
-| kube-dashboard/fulladmin | Full admin privilege for kube-dashboard                          |
-| kube-state-metrics       | Kubernetes metrics exporter                                      |
-| kubernetes-monitoring    | prometheus instance to be configured for k8s cluster monitoring. |
-| loki                     | loki based log collector                                         |
-| minio                    | Simple MINIO S3 server                                           |
-| node-exporter            | Prometheus Node Exporter                                         |
-| prometheus               | Prometheus monitoring                                            |
-| sleep                    | Forever sleeping test containers                                 |
-+--------------------------+------------------------------------------------------------------+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">&gt; flekszible app search</span>
+<span style="color:#f92672">INFO[0000] Input dir: /tmp, output dir</span>: <span style="color:#ae81ff">/tmp</span>
+<span style="color:#ae81ff">INFO[0000] Reading resources from /tmp/resources</span>
+<span style="color:#ae81ff">+--------------------------+------------------------------------------------------------------+</span>
+<span style="color:#ae81ff">| path                     | description                                                      |</span>
+<span style="color:#ae81ff">+--------------------------+------------------------------------------------------------------+</span>
+<span style="color:#ae81ff">| flink                    | Apache Flink                                                     |</span>
+<span style="color:#ae81ff">| grafana                  | Grafana dashboard server                                         |</span>
+<span style="color:#ae81ff">| hdfs                     | Apache Hadoop HDFS base setup                                    |</span>
+<span style="color:#ae81ff">| hdfs-ha                  | Apache Hadoop HDFS, HA setup                                     |</span>
+<span style="color:#ae81ff">| jaeger                   | Jaeger tracing server                                            |</span>
+<span style="color:#ae81ff">| kafka                    | Apache Kafka                                                     |</span>
+<span style="color:#ae81ff">| kafka-demo               | Simple console producer / consumer for Kafka                     |</span>
+<span style="color:#ae81ff">| krb5-dev                 | Unsecure MIT kerberos server for DEVELOPMENT only                |</span>
+<span style="color:#ae81ff">| krb5-dev/getkeystore     | Sidecar definition to import java trust/keystore from vault      |</span>
+<span style="color:#ae81ff">| monitor                  | K8s level monitoring                                             |</span>
+<span style="color:#ae81ff">| pv-test                  | Nginx example deployment with persistent volume claim.           |</span>
+<span style="color:#ae81ff">| zookeeper                | Scalable Apache Zookeeper setup                                  |</span>
+<span style="color:#ae81ff">| ozone                    | Apache Hadoop Ozone                                              |</span>
+<span style="color:#ae81ff">| ozone/freon              | Load test tool for Apache Hadoop Ozone                           |</span>
+<span style="color:#ae81ff">| anonymous-proxy          | permission to access proxy url by anonymous users                |</span>
+<span style="color:#ae81ff">| cadvisor                 | CAdvisor node level container metrics                            |</span>
+<span style="color:#ae81ff">| grafana                  | Grafana dashboard server                                         |</span>
+<span style="color:#ae81ff">| jaeger                   | Jaeger tracing server                                            |</span>
+<span style="color:#ae81ff">| kube-dashboard/fulladmin | Full admin privilege for kube-dashboard                          |</span>
+<span style="color:#ae81ff">| kube-state-metrics       | Kubernetes metrics exporter                                      |</span>
+<span style="color:#ae81ff">| kubernetes-monitoring    | prometheus instance to be configured for k8s cluster monitoring. |</span>
+<span style="color:#ae81ff">| loki                     | loki based log collector                                         |</span>
+<span style="color:#ae81ff">| minio                    | Simple MINIO S3 server                                           |</span>
+<span style="color:#ae81ff">| node-exporter            | Prometheus Node Exporter                                         |</span>
+<span style="color:#ae81ff">| prometheus               | Prometheus monitoring                                            |</span>
+<span style="color:#ae81ff">| sleep                    | Forever sleeping test containers                                 |</span>
+<span style="color:#ae81ff">+--------------------------+------------------------------------------------------------------+</span>
 </code></pre></div><p>And add everything what you need:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">&gt; flekszible app add zookeeper
-&gt; flekszible app add flink
-&gt; flekszible app add kafka
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">&gt; flekszible app add zookeeper</span>
+<span style="color:#ae81ff">&gt; flekszible app add flink</span>
+<span style="color:#ae81ff">&gt; flekszible app add kafka</span>
 </code></pre></div><p>Finally you can generate the Kubernetes resources files:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">&gt; flekszible generate
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">&gt; flekszible generate</span>
 </code></pre></div><p>It generates all the required yaml files.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">&gt; ls -lah
-.rwxr-xr-x   <span style="color:#ae81ff">194</span> elek <span style="color:#ae81ff">15</span> Dec  <span style="color:#ae81ff">9</span>:<span style="color:#ae81ff">00</span>  Flekszible
-.rw-r-xr-x   <span style="color:#ae81ff">177</span> elek <span style="color:#ae81ff">15</span> Dec  <span style="color:#ae81ff">9</span>:<span style="color:#ae81ff">02</span>  flink-config-configmap.yaml
-.rw-r-xr-x   <span style="color:#ae81ff">230</span> elek <span style="color:#ae81ff">15</span> Dec  <span style="color:#ae81ff">9</span>:<span style="color:#ae81ff">02</span>  flink-jobmanager-service.yaml
-.rw-r-xr-x   <span style="color:#ae81ff">627</span> elek <span style="color:#ae81ff">15</span> Dec  <span style="color:#ae81ff">9</span>:<span style="color:#ae81ff">02</span>  flink-jobmanager-statefulset.yaml
-.rw-r-xr-x   <span style="color:#ae81ff">233</span> elek <span style="color:#ae81ff">15</span> Dec  <span style="color:#ae81ff">9</span>:<span style="color:#ae81ff">02</span>  flink-taskmanager-service.yaml
-.rw-r-xr-x   <span style="color:#ae81ff">634</span> elek <span style="color:#ae81ff">15</span> Dec  <span style="color:#ae81ff">9</span>:<span style="color:#ae81ff">02</span>  flink-taskmanager-statefulset.yaml
-.rw-r-xr-x   <span style="color:#ae81ff">174</span> elek <span style="color:#ae81ff">15</span> Dec  <span style="color:#ae81ff">9</span>:<span style="color:#ae81ff">02</span>  kafka-broker-service.yaml
-.rw-r-xr-x   <span style="color:#ae81ff">723</span> elek <span style="color:#ae81ff">15</span> Dec  <span style="color:#ae81ff">9</span>:<span style="color:#ae81ff">02</span>  kafka-broker-statefulset.yaml
-.rw-r-xr-x   <span style="color:#ae81ff">331</span> elek <span style="color:#ae81ff">15</span> Dec  <span style="color:#ae81ff">9</span>:<span style="color:#ae81ff">02</span>  kafka-config-configmap.yaml
-.rw-r-xr-x   <span style="color:#ae81ff">506</span> elek <span style="color:#ae81ff">15</span> Dec  <span style="color:#ae81ff">9</span>:<span style="color:#ae81ff">02</span>  zookeeper-config-configmap.yaml
-.rw-r-xr-x   <span style="color:#ae81ff">177</span> elek <span style="color:#ae81ff">15</span> Dec  <span style="color:#ae81ff">9</span>:<span style="color:#ae81ff">02</span>  zookeeper-service.yaml
-.rw-r-xr-x   <span style="color:#ae81ff">766</span> elek <span style="color:#ae81ff">15</span> Dec  <span style="color:#ae81ff">9</span>:<span style="color:#ae81ff">02</span>  zookeeper-statefulset.yaml
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">&gt; ls -lah</span>
+<span style="color:#ae81ff">.rwxr-xr-x   194 elek 15 Dec  9:00  Flekszible</span>
+<span style="color:#ae81ff">.rw-r-xr-x   177 elek 15 Dec  9:02  flink-config-configmap.yaml</span>
+<span style="color:#ae81ff">.rw-r-xr-x   230 elek 15 Dec  9:02  flink-jobmanager-service.yaml</span>
+<span style="color:#ae81ff">.rw-r-xr-x   627 elek 15 Dec  9:02  flink-jobmanager-statefulset.yaml</span>
+<span style="color:#ae81ff">.rw-r-xr-x   233 elek 15 Dec  9:02  flink-taskmanager-service.yaml</span>
+<span style="color:#ae81ff">.rw-r-xr-x   634 elek 15 Dec  9:02  flink-taskmanager-statefulset.yaml</span>
+<span style="color:#ae81ff">.rw-r-xr-x   174 elek 15 Dec  9:02  kafka-broker-service.yaml</span>
+<span style="color:#ae81ff">.rw-r-xr-x   723 elek 15 Dec  9:02  kafka-broker-statefulset.yaml</span>
+<span style="color:#ae81ff">.rw-r-xr-x   331 elek 15 Dec  9:02  kafka-config-configmap.yaml</span>
+<span style="color:#ae81ff">.rw-r-xr-x   506 elek 15 Dec  9:02  zookeeper-config-configmap.yaml</span>
+<span style="color:#ae81ff">.rw-r-xr-x   177 elek 15 Dec  9:02  zookeeper-service.yaml</span>
+<span style="color:#ae81ff">.rw-r-xr-x   766 elek 15 Dec  9:02  zookeeper-statefulset.yaml</span>
 </code></pre></div><p>Finally you can install it:</p>
 <pre><code>kubectl apply -f .
 </code></pre><p>For more customization check the <a href="https://flekszible.netlify.com/">documentation of Flekszible</a></p>
@@ -277,59 +277,59 @@ INFO[<span style="color:#ae81ff">0000</span>] Reading resources from /tmp/resour
                   
                     <div>
                     <p>The next steps after the first cluster is the customization. It can be done by adding any kind of custom transformation or reuse ready-to-use transformations.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">&gt; flekszible transformation search
-+---------------------+--------------------------------------------------------------------------------------------+
-| name                | description                                                                                |
-+---------------------+--------------------------------------------------------------------------------------------+
-| Namespace           | Use explicit namespace                                                                     |
-| Pipe                | Transform content with external shell command.                                             |
-| Remove              | Remove yaml fragment from an existing k8s resources                                        |
-| ozone/emptydir      | Add empty dir based ephemeral persistence                                                  |
-| ozone/onenode       | remove scheduling rules to make it possible to run multiple datanode on the same k8s node. |
-| ozone/persistence   | Add real PVC based persistence                                                             |
-| ozone/profiler      | Enable profiler endpoint.                                                                  |
-| Add                 | Extends yaml fragment to an existing k8s resources                                         |
-| Image               | Replaces the docker image definition                                                       |
-| Prefix              | Add same prefix to all the k8s names                                                       |
-| ozone/devtracing    | Enable jaeger tracing for ALL the requests (<span style="color:#ae81ff">100</span>% sampling)                                 |
-| ozone/grafana       | Enable grafana for ozone dashboards                                                        |
-| ozone/memdisk       | Use memdisks for empty dirs                                                                |
-| ozone/ozonefs       | copy ozonefs jar file to a temporary emptydir volume                                       |
-| Change              | Replace existing value literal in the yaml struct                                          |
-| ConfigHash          | Add labels to the k8s resources with the hash of the used configmaps                       |
-| DaemonToStatefulSet | Converts daemonset to statefulset                                                          |
-| K8sWriter           | Internal transformation to print out k8s resources as yaml                                 |
-| PublishService      | Creates additional service for internal services                                           |
-| Replace             | Replace a yaml subtree with an other one.                                                  |
-| ozone/tracing       | Enable jaeger tracing                                                                      |
-| PublishStatefulSet  | Creates additional NodeType service for StatefulSet internal services                      |
-| zookeeper/scale     | Set the number of the zookeeper replicas.                                                  |
-| ozone/prometheus    | Enable prometheus monitoring in Ozone                                                      |
-+---------------------+--------------------------------------------------------------------------------------------+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">&gt; flekszible transformation search</span>
+<span style="color:#ae81ff">+---------------------+--------------------------------------------------------------------------------------------+</span>
+<span style="color:#ae81ff">| name                | description                                                                                |</span>
+<span style="color:#ae81ff">+---------------------+--------------------------------------------------------------------------------------------+</span>
+<span style="color:#ae81ff">| Namespace           | Use explicit namespace                                                                     |</span>
+<span style="color:#ae81ff">| Pipe                | Transform content with external shell command.                                             |</span>
+<span style="color:#ae81ff">| Remove              | Remove yaml fragment from an existing k8s resources                                        |</span>
+<span style="color:#ae81ff">| ozone/emptydir      | Add empty dir based ephemeral persistence                                                  |</span>
+<span style="color:#ae81ff">| ozone/onenode       | remove scheduling rules to make it possible to run multiple datanode on the same k8s node. |</span>
+<span style="color:#ae81ff">| ozone/persistence   | Add real PVC based persistence                                                             |</span>
+<span style="color:#ae81ff">| ozone/profiler      | Enable profiler endpoint.                                                                  |</span>
+<span style="color:#ae81ff">| Add                 | Extends yaml fragment to an existing k8s resources                                         |</span>
+<span style="color:#ae81ff">| Image               | Replaces the docker image definition                                                       |</span>
+<span style="color:#ae81ff">| Prefix              | Add same prefix to all the k8s names                                                       |</span>
+<span style="color:#ae81ff">| ozone/devtracing    | Enable jaeger tracing for ALL the requests (100% sampling)                                 |</span>
+<span style="color:#ae81ff">| ozone/grafana       | Enable grafana for ozone dashboards                                                        |</span>
+<span style="color:#ae81ff">| ozone/memdisk       | Use memdisks for empty dirs                                                                |</span>
+<span style="color:#ae81ff">| ozone/ozonefs       | copy ozonefs jar file to a temporary emptydir volume                                       |</span>
+<span style="color:#ae81ff">| Change              | Replace existing value literal in the yaml struct                                          |</span>
+<span style="color:#ae81ff">| ConfigHash          | Add labels to the k8s resources with the hash of the used configmaps                       |</span>
+<span style="color:#ae81ff">| DaemonToStatefulSet | Converts daemonset to statefulset                                                          |</span>
+<span style="color:#ae81ff">| K8sWriter           | Internal transformation to print out k8s resources as yaml                                 |</span>
+<span style="color:#ae81ff">| PublishService      | Creates additional service for internal services                                           |</span>
+<span style="color:#ae81ff">| Replace             | Replace a yaml subtree with an other one.                                                  |</span>
+<span style="color:#ae81ff">| ozone/tracing       | Enable jaeger tracing                                                                      |</span>
+<span style="color:#ae81ff">| PublishStatefulSet  | Creates additional NodeType service for StatefulSet internal services                      |</span>
+<span style="color:#ae81ff">| zookeeper/scale     | Set the number of the zookeeper replicas.                                                  |</span>
+<span style="color:#ae81ff">| ozone/prometheus    | Enable prometheus monitoring in Ozone                                                      |</span>
+<span style="color:#ae81ff">+---------------------+--------------------------------------------------------------------------------------------+</span>
 </code></pre></div><p>The prefixed transformations (like <code>zookeeper/scale</code>) are usually combined, pre-defined transformation, you can apply it with command line (<code>flekszible transformation add ozone/emptydir</code>) or with editing the <code>Flekszible</code> descriptor.</p>
 <p>(Note: all the previous command line just modified this descriptor)</p>
 <p>In this example we imported Ozone app, with a transformation which adds emptyDir based persistence:</p>
 <p>Content of <code>Flekszible</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">import</span>:
- - <span style="color:#66d9ef">path</span>: ozone
-   <span style="color:#66d9ef">transformations</span>:
-   - <span style="color:#66d9ef">type</span>: ozone/emptydir
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">import</span>:
+ - <span style="color:#f92672">path</span>: <span style="color:#ae81ff">ozone</span>
+   <span style="color:#f92672">transformations</span>:
+   - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">ozone/emptydir</span>
 </code></pre></div><p>In the next example we imported kafka, kafka-demo, flink, but the flink resources are transformed to add a custom <code>imagePullPolicy</code>:</p>
 <p>Content of <code>Flekszible</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">import</span>:
- - <span style="color:#66d9ef">path</span>: kafka
- - <span style="color:#66d9ef">path</span>: kafka-demo
- - <span style="color:#66d9ef">path</span>: flink
-   <span style="color:#66d9ef">transformations</span>:
-   - <span style="color:#66d9ef">type</span>: add
-     <span style="color:#66d9ef">path</span>:
-       - spec
-       - template
-       - spec
-       - containers
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">import</span>:
+ - <span style="color:#f92672">path</span>: <span style="color:#ae81ff">kafka</span>
+ - <span style="color:#f92672">path</span>: <span style="color:#ae81ff">kafka-demo</span>
+ - <span style="color:#f92672">path</span>: <span style="color:#ae81ff">flink</span>
+   <span style="color:#f92672">transformations</span>:
+   - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">add</span>
+     <span style="color:#f92672">path</span>:
+       - <span style="color:#ae81ff">spec</span>
+       - <span style="color:#ae81ff">template</span>
+       - <span style="color:#ae81ff">spec</span>
+       - <span style="color:#ae81ff">containers</span>
        - <span style="color:#e6db74">&#34;.*&#34;</span>
-     <span style="color:#66d9ef">value</span>:
-       <span style="color:#66d9ef">imagePullPolicy</span>: IfNotPresent
+     <span style="color:#f92672">value</span>:
+       <span style="color:#f92672">imagePullPolicy</span>: <span style="color:#ae81ff">IfNotPresent</span>
 </code></pre></div>
                     </div>
                     

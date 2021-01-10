@@ -5,11 +5,7 @@
     <link>https://flokkr.github.io/page/</link>
     <description>Recent content in Pages on Flokkr.</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 14 Dec 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://flokkr.github.io/page/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 14 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://flokkr.github.io/page/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Getting started</title>
       <link>https://flokkr.github.io/getting-started/</link>

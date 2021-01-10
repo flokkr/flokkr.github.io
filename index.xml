@@ -5,11 +5,7 @@
     <link>https://flokkr.github.io/</link>
     <description>Recent content on Flokkr.</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 01 May 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://flokkr.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 01 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://flokkr.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Project update</title>
       <link>https://flokkr.github.io/post/spring2020/</link>
